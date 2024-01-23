@@ -6,6 +6,7 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
+* Brad Hultman some randon guy
 * Hi, my name is Cainan!
 * Hi, I am Dylan Reimer. I am looking forward to developing with this excellent team!!
 * Tad(Chaemyoung) Yoon

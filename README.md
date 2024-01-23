@@ -6,9 +6,10 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-* Dylan Reimer
 * Brad Hultman some randon guy
-* ...
+* Hi, my name is Cainan!
+* Hi, I am Dylan Reimer. I am looking forward to developing with this excellent team!
+* Tad(Chaemyoung) Yoon
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.

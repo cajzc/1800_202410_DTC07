@@ -9,7 +9,7 @@ List team members and/or short bio's here...
 * Brad Hultman some random guy
 * Hi, my name is Cainan!
 * Hi, I am Dylan Reimer. I am looking forward to developing with this excellent team!
-* Tad(Chaemyoung) Yoon
+* Tad(Chaemyoung) Yoon I need to write
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.

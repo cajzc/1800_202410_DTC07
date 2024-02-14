@@ -16,10 +16,10 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0000ff',
-                        secondary: '#548c05',
-                        background: '#75c4f9',
-                        accent: '#f2ab29'
+                        primary: '#2B4652',
+                        secondary: '#005CA3',
+                        background: '#C4CCCE',
+                        accent: '#FE9503'
                     }
                 }
             }
@@ -29,6 +29,19 @@
     <!-- Boostrap Library JS CDN  go here -->
 
     <!-- Other libraries go here -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
 
     <!-- Link to styles of your own -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
@@ -58,13 +71,19 @@
         </section>
     </main>
 
-    <footer class="fixed inset-x-0 bottom-0 h-16 text-center w-full bg-primary flex flex-row justify-evenly">
+    <footer
+        class="fixed inset-x-0 bottom-0 h-12 text-center w-full text-secondary bg-primary flex flex-row justify-evenly">
 
-        <div>back</div>
-        <div class="w-1/4 flex justify-evenly">
-            <div class="absolute -top-6 w-20 h-20 rounded-full bg-red-600 ">Go</div>
+        <div class="material-symbols-outlined text-4xl pt-1">
+            arrow_back_ios</div>
+        <div class="min-w-28 flex justify-evenly">
+            <div class="absolute -top-6 w-20 h-20 rounded-full bg-primary material-symbols-outlined text-7xl">
+                play_circle
+            </div>
         </div>
-        <div>home</div>
+        <div class="material-symbols-outlined text-4xl pt-1">
+            home
+        </div>
     </footer>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

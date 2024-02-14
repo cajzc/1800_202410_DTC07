@@ -11,7 +11,20 @@
 
     <!-- Tailwind Library CSS CDN go here -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0000ff',
+                        secondary: '#548c05',
+                        background: '#75c4f9',
+                        accent: '#f2ab29'
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Boostrap Library JS CDN  go here -->
 
     <!-- Other libraries go here -->
@@ -21,7 +34,7 @@
 
 </head>
 
-<body>
+<body class="bg-background">
 
     <!------------------------------>
     <!-- Your HTML Layout go here -->
@@ -31,7 +44,7 @@
 
     <main></main>
 
-    <footer class="fixed inset-x-0 bottom-0 h-16 bg-cyan-900">
+    <footer class="fixed inset-x-0 bottom-0 h-16 bg-primary">
         Placeholder Footer
     </footer>
     <!---------------------------------------------->

@@ -58,7 +58,7 @@
     <header>
         <!-- Navbar -->
         <nav
-            class="bg-primary dark:bg-primary fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+            class="bg-primary dark:bg-primary fixed w-full z-20 top-0 start-0  rounded-b-lg">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="images/Logo.png" class="h-8" alt="Logo">
@@ -79,15 +79,23 @@
             </div>
         </nav>
     </header>
-
-    <main class="flex flex-col md:flex-row conatiner mx-auto my-6 px-6 gap-4">
-        <section class="mt-16">
-
-            <!-- Welcome message -->
-            <div class="bg-inherit text-center text-primary">Welcome Home.</div>
-
+        <div>
+        <!-- Welcome message -->    
+        <div class="bg-inherit text-center text-primary mt-24 text-2xl">Stay ahead of traffic<br><span class="text-lg">En-Route Commute</span></div> 
+        
+        <div class="flex justify-center mt-4 text-primary text-center gap-2">
+            <button class="bg-secondary rounded px-4 py-2 shadow-md shadow-primary">
+                <span class="">Sign Up</span>
+            </button>
+            <button class="bg-accent rounded px-4 py-2 shadow-md shadow-primary">
+                <span class="">Sign In</span>
+            </button>
+        </div>
+        </div>
+    <main class="flex flex-col md:flex-row md:mb-16 conatiner mx-auto my-6 px-6 gap-4">
+        <section class="mt-2">
             <!-- Map Section -->
-            <div class="gap-y-4 mt-4 shadow-md shadow-primary rounded-lg overflow-clip">
+            <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip">
                 <div class="container">
                     <div class="relative w-100%">
                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F002%2F920%2F438%2Fnon_2x%2Fabstract-city-map-seamless-pattern-roads-navigation-gps-use-for-pattern-fills-surface-textures-web-page-background-wallpaper-illustration-free-vector.jpg&f=1&nofb=1&ipt=8d84d5bac5d3101ad1bfcc263f73ecf0e09d378c51937c9a689f950d14893a4b&ipo=images">
@@ -100,16 +108,13 @@
                                         search
                                     </span>
                                 </button>
-
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Search div  bg-gray-800 opacity-70-->
-
         </section>
-
-        <section class= "gap-y-4 mx-auto mb-16 md:mt-28">
+        <section class= "gap-y-4 mx-auto mb-16 md:mt-6">
             <button class="bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary">
                 <h1 class="text-2xl font-bold pt-4">Statistics</h1>
                 <h2 class="pt-4 pb-2 text-xl">Log in to see Statistics</h2>

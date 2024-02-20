@@ -57,8 +57,7 @@
     <!-- Stuff for body goes here -->
     <header>
         <!-- Navbar -->
-        <nav
-            class="bg-primary dark:bg-primary fixed w-full z-20 top-0 start-0  rounded-b-lg">
+        <nav class="bg-primary dark:bg-primary fixed w-full z-20 top-0 start-0  rounded-b-lg">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="images/Logo.png" class="h-8" alt="Logo">
@@ -71,7 +70,8 @@
                         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         aria-controls="navbar-sticky">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
                         </svg>
                     </button>
                 </div>
@@ -79,10 +79,11 @@
             </div>
         </nav>
     </header>
-        <div>
-        <!-- Welcome message -->    
-        <div class="bg-inherit text-center text-primary mt-24 text-2xl">Stay ahead of traffic<br><span class="text-lg">En-Route Commute</span></div> 
-        
+    <div>
+        <!-- Welcome message -->
+        <div class="bg-inherit text-center text-primary mt-24 text-2xl">Stay ahead of traffic<br><span
+                class="text-lg">En-Route Commute</span></div>
+
         <div class="flex justify-center mt-4 text-primary text-center gap-2">
             <button class="bg-secondary rounded px-4 py-2 shadow-md shadow-primary">
                 <span class="">Sign Up</span>
@@ -91,14 +92,15 @@
                 <span class="">Sign In</span>
             </button>
         </div>
-        </div>
+    </div>
     <main class="flex flex-col md:flex-row md:mb-16 conatiner mx-auto my-6 px-6 gap-4">
         <section class="mt-2">
             <!-- Map Section -->
             <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip">
                 <div class="container">
                     <div class="relative w-100%">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F002%2F920%2F438%2Fnon_2x%2Fabstract-city-map-seamless-pattern-roads-navigation-gps-use-for-pattern-fills-surface-textures-web-page-background-wallpaper-illustration-free-vector.jpg&f=1&nofb=1&ipt=8d84d5bac5d3101ad1bfcc263f73ecf0e09d378c51937c9a689f950d14893a4b&ipo=images">
+                        <img
+                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F002%2F920%2F438%2Fnon_2x%2Fabstract-city-map-seamless-pattern-roads-navigation-gps-use-for-pattern-fills-surface-textures-web-page-background-wallpaper-illustration-free-vector.jpg&f=1&nofb=1&ipt=8d84d5bac5d3101ad1bfcc263f73ecf0e09d378c51937c9a689f950d14893a4b&ipo=images">
                         <div class="absolute top-0 left-0 right-0 px-4 py-2">
                             <div class="flex flex-row justify-center">
                                 <button class="bg-gray-500 opacity-60 rounded px-20 p-4 relative">
@@ -114,7 +116,7 @@
                 </div>
                 <!-- Search div  bg-gray-800 opacity-70-->
         </section>
-        <section class= "gap-y-4 mx-auto mb-16 md:mt-6">
+        <section class="gap-y-4 mx-auto mb-16 md:mt-6">
             <button class="bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary">
                 <h1 class="text-2xl font-bold pt-4">Statistics</h1>
                 <h2 class="pt-4 pb-2 text-xl">Log in to see Statistics</h2>
@@ -124,22 +126,23 @@
     </main>
 
     <footer
-    class="fixed inset-x-0 bottom-0 h-12 text-center w-full text-background bg-primary flex flex-row justify-evenly rounded-t-lg">
-    <div class="material-symbols-outlined text-4xl pt-1">
-        arrow_back_ios</div>
-    <div class="min-w-28 flex justify-evenly">
-        <div
-            class="absolute -top-6 w-20 h-20 rounded-full bg-primary text-background material-symbols-outlined text-7xl">
-            play_circle
+        class="fixed inset-x-0 bottom-0 h-12 text-center w-full text-background bg-primary flex flex-row justify-evenly rounded-t-lg">
+        <div class="material-symbols-outlined text-4xl pt-1">
+            arrow_back_ios</div>
+        <div class="min-w-28 flex justify-evenly">
+            <div
+                class="absolute -top-6 w-20 h-20 rounded-full bg-primary text-background material-symbols-outlined text-7xl">
+                play_circle
+            </div>
         </div>
-    </div>
-    <div class="material-symbols-outlined text-4xl pt-1">
-        home
-    </div>
-</footer>
+        <div class="material-symbols-outlined text-4xl pt-1">
+            home
+        </div>
+    </footer>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
+    <script src="./scripts/firebaseAPI_DTC07.js"></script>
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->

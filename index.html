@@ -67,21 +67,20 @@
 
         <div class="flex justify-center mt-4 text-primary text-center gap-2">
             <button class="bg-secondary rounded px-4 py-2 shadow-md shadow-primary">
-                <span class="">Sign Up</span>
+                <span class="text-slate-300 font-bold">Sign Up</span>
             </button>
             <button class="bg-accent rounded px-4 py-2 shadow-md shadow-primary">
-                <span class="">Sign In</span>
+                <span class="font-bold">Sign In</span>
             </button>
         </div>
     </div>
-    <main class="flex flex-col md:flex-row md:mb-16 conatiner mx-auto my-6 px-6 gap-4">
+    <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
         <section class="mt-2">
             <!-- Map Section -->
             <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip">
                 <div class="container">
-                    <div class="relative w-100%">
-                        <img
-                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F002%2F920%2F438%2Fnon_2x%2Fabstract-city-map-seamless-pattern-roads-navigation-gps-use-for-pattern-fills-surface-textures-web-page-background-wallpaper-illustration-free-vector.jpg&f=1&nofb=1&ipt=8d84d5bac5d3101ad1bfcc263f73ecf0e09d378c51937c9a689f950d14893a4b&ipo=images">
+                    <div class="relative w-50%">
+                        <img class="object-fill" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F002%2F920%2F438%2Fnon_2x%2Fabstract-city-map-seamless-pattern-roads-navigation-gps-use-for-pattern-fills-surface-textures-web-page-background-wallpaper-illustration-free-vector.jpg&f=1&nofb=1&ipt=8d84d5bac5d3101ad1bfcc263f73ecf0e09d378c51937c9a689f950d14893a4b&ipo=images">
                         <div class="absolute top-0 left-0 right-0 px-4 py-2">
                             <div class="flex flex-row justify-center">
                                 <button class="bg-gray-500 opacity-60 rounded px-20 p-4 relative">
@@ -97,12 +96,26 @@
                 </div>
                 <!-- Search div  bg-gray-800 opacity-70-->
         </section>
-        <section class="gap-y-4 mx-auto mb-16 md:mt-6">
-            <button class="bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary">
-                <h1 class="text-2xl font-bold pt-4">Statistics</h1>
-                <h2 class="pt-4 pb-2 text-xl">Log in to see Statistics</h2>
-                <p class="pb-4 text-lg">The data is waiting for you. </p>
-            </button>
+        <!-- Stastistics boxes -->
+        <section class=" flex flex-box md: flex-col md:justify-between gap-1 mx-auto mb-16 md:mt-6 max-w-full">
+            <div class="my-2">
+                <button class="justify-between bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
+                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
+                </button>
+            </div>
+            <div class="my-2">
+                <button class="bg-secondary text-slate-300 rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
+                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
+                </button>
+            </div>
+            <div class="my-2">
+                <button class="bg-secondary text-slate-300 rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
+                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
+                </button>
+            </div>
         </section>
     </main>
     <!-- our own footer goes here-->

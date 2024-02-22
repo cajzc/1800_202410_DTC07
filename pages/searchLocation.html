@@ -24,7 +24,6 @@
                 }
             }
         }
-
     </script>
     <!-- Boostrap Library JS CDN  go here -->
 
@@ -103,21 +102,29 @@
                 </div>
         </section>
         <!-- Location Description box -->
-        <section class="gap-y-4 mx-auto mb-0.5 md:mt-6">
-            <button class="bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary">
-                <h1 class="text-2xl font-bold pt-4">BCIT Downtown Campus</h1>
-                <p class="pb-4 text-lg">Star Star Star Star Star <span>5.0</span> </p>
-                <h2 class="pb-2 text-xl mb-5">555 Seymour St, Vancouver, BC V6B 3H6</h2>
-            </button>
-        </section>
-        <!-- Summary Review box -->
-        <section class="gap-y-4 mx-auto mb-16 md:mt-6">
-            <button class="bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary">
-                <h1 class="text-2xl font-bold pt-4">Review Summary</h1>
-                <p class="pb-4 text-lg">Star Star Star Star Star <span>5.0</span> </p>
-                <h2 class="pb-2 text-xl mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem est dolores ad? Nostrum corrupti quos ut voluptates, dolores quis ipsam animi quisquam culpa at vero deleniti eos rem dignissimos perferendis!</h2>
-            </button>
-        </section>
+
+        <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+            <div class="flex justify-between mb-4">
+                <button id="detailButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">Detail</button>
+                <button id="reviewsButton" class="px-4 py-2 rounded-md bg-gray-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400">Reviews</button>
+            </div>
+            <div id="detailContent">
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">Location Details</h2>
+                <p class="text-gray-600">Location: <span class="font-semibold">BCIT Downtown campus</span></p>
+                <p class="text-gray-600">Address: <span class="font-semibold">555 Seymour St, Vancouver, BC</span></p>
+                <p class="text-gray-600">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div id="reviewsContent" class="hidden">
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">Reviews</h2>
+                <div class="mb-4">
+                    <p class="text-gray-600">User Name: <span class="font-semibold">Taddii</span></p>
+                    <p class="text-gray-600">Rate: <span class="font-semibold">1.5</span></p>
+                    <p class="text-gray-600">Time: <span class="font-semibold">2024-02-21</span></p>
+                    <p class="text-gray-600">Description: Great experience! Highly recommended.</p>
+                </div>
+                <!-- Add more reviews here if needed -->
+            </div>
+        </div>
     </main>
 
     <footer
@@ -137,6 +144,30 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
+    <script>
+        const detailButton = document.getElementById('detailButton');
+        const reviewsButton = document.getElementById('reviewsButton');
+        const detailContent = document.getElementById('detailContent');
+        const reviewsContent = document.getElementById('reviewsContent');
+
+        detailButton.addEventListener('click', () => {
+            detailContent.classList.remove('hidden');
+            reviewsContent.classList.add('hidden');
+            detailButton.classList.add('bg-blue-500', 'text-white');
+            detailButton.classList.remove('bg-gray-300', 'text-gray-600');
+            reviewsButton.classList.remove('bg-blue-500', 'text-white');
+            reviewsButton.classList.add('bg-gray-300', 'text-gray-600');
+        });
+
+        reviewsButton.addEventListener('click', () => {
+            detailContent.classList.add('hidden');
+            reviewsContent.classList.remove('hidden');
+            detailButton.classList.remove('bg-blue-500', 'text-white');
+            detailButton.classList.add('bg-gray-300', 'text-gray-600');
+            reviewsButton.classList.add('bg-blue-500', 'text-white');
+            reviewsButton.classList.remove('bg-gray-300', 'text-gray-600');
+        });
+    </script>
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->

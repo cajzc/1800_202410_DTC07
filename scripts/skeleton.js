@@ -4,8 +4,8 @@
 //---------------------------------------------------
 function loadSkeleton() {
     //CHANGE AFTER FIREBASE WORKS
-    console.log($('#navbarPlaceholder').load('./pages/nav_before_login.html'));
-    console.log($('#footerPlaceholder').load('./pages/footer.html'));
+    console.log($('#navbarPlaceholder').load('../pages/nav_after_login.html'));
+    console.log($('#footerPlaceholder').load('../pages/footer.html'));
 
     /*firebase.auth().onAuthStateChanged(function (user) {
         if (user) {                   //if the pointer to "user" object is not null, then someone is logged in

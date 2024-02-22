@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En-Route</title>
+
+    <!-- Tailwind Library CSS CDN go here -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#292D30',
+                        secondary: '#005CA3',
+                        background: '#C4CCCE',
+                        accent: '#FE9503'
+                    }
+                }
+            }
+        }
+
+    </script>
+    <!-- Boostrap Library JS CDN  go here -->
+
+    <!-- Other libraries go here -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+
+<body class="bg-background">
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
+
+    <main class="bg-background">
+
+        <div class="container px-10 mt-24 h-48 mx-auto py-4 text-primary text-center">
+            <h1 class="text-2xl inline-block px-10 py-4 rounded-xl">Enjoy your commute</H1>
+        </div>
+
+        <div class="container text-center mx-auto">
+            <button
+                class="text-center bg-secondary py-2 px-6 rounded-xl text-2xl text-background font-bold shadow-lg shadow-primary hover:shadow-accent"
+                id="transferButton">Transfer</button>
+        </div>
+
+        <div>
+            <div class="flex container justify-center mx-auto mt-6 gap-4 md:flex-row flex-col mb-4">
+                <div class="flex gap-4 justify-center">
+                    <div class="text-center">
+                        <input type="radio" id="bus" name="transport" class="hidden peer">
+                        <label for="bus"
+                            class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_bus
+                        </label>
+                        <h2 class="text-primary">Bus</h2>
+                    </div>
+                    <div class="text-center">
+                        <input type="radio" id="car" name="transport" class="hidden peer">
+                        <label for="car"
+                            class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_car
+                        </label>
+                        <h2 class="text-primary">Car</h2>
+                    </div>
+                    <div class="text-center">
+                        <input type="radio" id="train" name="transport" class="hidden peer">
+                        <label for="train"
+                            class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            train
+                        </label>
+                        <h2 class="text-primary">Train</h2>
+                    </div>
+                </div>
+                <div class="flex gap-4 justify-center">
+                    <div class="text-center">
+                        <input type="radio" id="boat" name="transport" class="hidden peer">
+                        <label for="boat"
+                            class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_boat
+                        </label>
+                        <h2 class="text-primary">Boat</h2>
+                    </div>
+                    <div class="text-center">
+                        <input type="radio" id="walk" name="transport" class="hidden peer">
+                        <label for="walk"
+                            class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                        <h2 class="text-primary">Walk</h2>
+                    </div>
+                    <div class="text-center">
+                        <input type="radio" id="bike" name="transport" class="hidden peer">
+                        <label for="bike"
+                            class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_bike
+                        </label>
+                        <h2 class="text-primary">Bike</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center mx-auto">
+                <button
+                    class="text-center bg-secondary py-2 px-6 rounded-xl text-2xl text-background font-bold shadow-lg shadow-primary hover:shadow-accent"
+                    id="transferSelect">Lets Go!</button>
+            </div>
+        </div>
+
+
+        <div class="flex gap-6 justify-center mt-10 mb-24">
+            <button
+                class="material-symbols-outlined text-center bg-primary p-2 rounded-full text-9xl text-secondary font-bold shadow-lg shadow-primary hover:shadow-accent"
+                id="transferSelect">pause_circle</button>
+            <button
+                class="material-symbols-outlined text-center bg-primary p-2 rounded-full text-9xl text-accent font-bold shadow-lg shadow-primary hover:shadow-accent"
+                id="transferSelect">stop_circle</button>
+        </div>
+
+    </main>
+
+
+    <nav id="footerPlaceholder"></nav>
+    <script src="../scripts/firebaseAPI_DTC07.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+
+
+</body>
+
+</html>

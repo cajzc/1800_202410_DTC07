@@ -102,7 +102,6 @@
                 </div>
         </section>
         <!-- Location Description box -->
-
         <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
             <div class="flex justify-between mb-4">
                 <button id="detailButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">Detail</button>
@@ -114,6 +113,7 @@
                 <p class="text-gray-600">Address: <span class="font-semibold">555 Seymour St, Vancouver, BC</span></p>
                 <p class="text-gray-600">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
+            <!-- Preview Reviews -->
             <div id="reviewsContent" class="hidden">
                 <h2 class="text-xl font-semibold text-gray-800 mb-2">Reviews</h2>
                 <div class="mb-4">
@@ -122,20 +122,42 @@
                     <p class="text-gray-600">Time: <span class="font-semibold">2024-02-21</span></p>
                     <p class="text-gray-600">Description: Great experience! Highly recommended.</p>
                 </div>
-                <!-- Add more reviews here if needed -->
-            </div>
-            <!-- "More Reviews" button -->
-            <div class="text-center mt-4">
-                <button id="moreReviewsButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">More Reviews</button>
+
+                
+                <!-- "More Reviews" button initially hidden -->
+                <div class="text-center mt-4 hidden" id="moreReviewsButtonContainer">
+                    <button id="moreReviewsButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">More Reviews</button>
+                </div>
             </div>
         </div>
         
         <script>
+            // JavaScript to toggle visibility of review section and "More Reviews" button
+            document.getElementById("detailButton").addEventListener("click", function() {
+                var reviewsContent = document.getElementById("reviewsContent");
+                var moreReviewsButtonContainer = document.getElementById("moreReviewsButtonContainer");
+                
+                // Hide review section and "More Reviews" button
+                reviewsContent.classList.add("hidden");
+                moreReviewsButtonContainer.classList.add("hidden");
+            });
+        
+            document.getElementById("reviewsButton").addEventListener("click", function() {
+                var reviewsContent = document.getElementById("reviewsContent");
+                var moreReviewsButtonContainer = document.getElementById("moreReviewsButtonContainer");
+                
+                // Show review section and "More Reviews" button
+                reviewsContent.classList.remove("hidden");
+                moreReviewsButtonContainer.classList.remove("hidden");
+            });
+        
             // JavaScript to redirect to review.html when "More Reviews" button is clicked
             document.getElementById("moreReviewsButton").addEventListener("click", function() {
                 window.location.href = "review.html";
             });
         </script>
+        
+        
         
     </main>
 

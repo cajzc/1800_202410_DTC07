@@ -124,7 +124,19 @@
                 </div>
                 <!-- Add more reviews here if needed -->
             </div>
+            <!-- "More Reviews" button -->
+            <div class="text-center mt-4">
+                <button id="moreReviewsButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">More Reviews</button>
+            </div>
         </div>
+        
+        <script>
+            // JavaScript to redirect to review.html when "More Reviews" button is clicked
+            document.getElementById("moreReviewsButton").addEventListener("click", function() {
+                window.location.href = "review.html";
+            });
+        </script>
+        
     </main>
 
     <footer

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +26,21 @@
                 }
             }
         }
-    </script>
-    <!-- Boostrap Library JS CDN  go here -->
 
+    </script>
     <!-- Other libraries go here -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <style>
         .material-symbols-outlined {
@@ -54,31 +64,10 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <header>
         <!-- Navbar -->
-        <nav class="bg-primary dark:bg-primary fixed w-full z-20 top-0 start-0  rounded-b-lg">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src=".images/Logo.png" class="h-8" alt="Logo">
-                </a>
-                <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse mr-3">
-                        <img src=".images/Profile.png" class="h-8" alt="Logo">
-                    </a>
-                    <button data-collapse-toggle="navbar-sticky" type="button"
-                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="navbar-sticky">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 1h15M1 7h15M1 13h15" />
-                        </svg>
-                    </button>
-                </div>
-
-            </div>
-        </nav>
+    <header>
+        <nav id="navbarPlaceholder"></nav>
     </header>
-
     <main class="flex flex-col md:flex-row md:mb-16 conatiner mx-auto my-6 px-6 gap-4">
         <section class="mt-5">
             <!-- Map Section -->
@@ -202,9 +191,18 @@
             reviewsButton.classList.remove('bg-gray-300', 'text-gray-600');
         });
     </script>
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
+
+    <script src="../scripts/firebaseAPI_DTC07.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
 
 </body>
 

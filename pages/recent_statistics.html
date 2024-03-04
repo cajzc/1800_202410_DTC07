@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En-Route</title>
+
+    <!-- Tailwind Library CSS CDN go here -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#292D30',
+                        secondary: '#005CA3',
+                        background: '#C4CCCE',
+                        accent: '#FE9503'
+                    }
+                }
+            }
+        }
+
+    </script>
+    <!-- Boostrap Library JS CDN  go here -->
+
+    <!-- Other libraries go here -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+
+<body class="bg-background">
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
+
+    <div class="flex flex-row space-x-2 mt-24">
+        <div>
+            <a class="font-extrabold text-primary hover:bg-accent px-4 py-2 rounded-lg"
+                href="/pages/recent_statistics.html">Recent</a>
+        </div>
+        <div>
+            <a class="font-extralight hover:bg-accent px-4 py-2 rounded-lg" href="/pages/statistics.html">Summary</a>
+        </div>
+    </div>
+
+    <div>
+        <!-- Individual route -->
+        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mt-4"
+            style="transform: scale(0.95);">
+
+            <div class="flex flex-col text-center space-y-4 text-white">
+                <h1 class="font-extrabold text-white text-3xl mb-4 p-4">Route X</h1>
+
+                <div class="flex flex-row justify-center space-x-16">
+                    <p>Richmond</p>
+                    <label for="arrow_forward"
+                        class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary rounded-lg text-background cursor-pointer">
+                        arrow_forward
+                    </label>
+                    <p>Vancouver</p>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="walk"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                        <p class="text-lg px-2 font-extrabold">|</p>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">11:30 am</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Park Rd</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Richmond Brighouse</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="train"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            train
+                        </label>
+                        <p class="text-lg px-2 font-extrabold">|</p>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">11:35 am</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Richmond Brighouse</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Yaletown</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="walk"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">12:15 pm</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Yaletown</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Vancouver City Center</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual route -->
+        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mt-4"
+            style="transform: scale(0.95);">
+
+            <div class="flex flex-col text-center space-y-4 text-white">
+                <h1 class="font-extrabold text-white text-3xl mb-4 p-4">Route Y</h1>
+
+                <div class="flex flex-row justify-center space-x-16">
+                    <p>Richmond</p>
+                    <label for="arrow_forward"
+                        class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary rounded-lg text-background cursor-pointer">
+                        arrow_forward
+                    </label>
+                    <p>Vancouver</p>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="walk"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                        <p class="text-lg px-2 font-extrabold">|</p>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">11:30 am</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Park Rd</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Richmond Brighouse</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="train"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            train
+                        </label>
+                        <p class="text-lg px-2 font-extrabold">|</p>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">11:35 am</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Richmond Brighouse</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Yaletown</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="walk"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">12:15 pm</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Yaletown</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Vancouver City Center</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Individual route -->
+        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mt-4"
+            style="transform: scale(0.95);">
+
+            <div class="flex flex-col text-center space-y-4 text-white">
+                <h1 class="font-extrabold text-white text-3xl mb-4 p-4">Route Z</h1>
+
+                <div class="flex flex-row justify-center space-x-16">
+                    <p>Richmond</p>
+                    <label for="arrow_forward"
+                        class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary rounded-lg text-background cursor-pointer">
+                        arrow_forward
+                    </label>
+                    <p>Vancouver</p>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="walk"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                        <p class="text-lg px-2 font-extrabold">|</p>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">11:30 am</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Park Rd</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Richmond Brighouse</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="train"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            train
+                        </label>
+                        <p class="text-lg px-2 font-extrabold">|</p>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">11:35 am</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Richmond Brighouse</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Yaletown</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual stop -->
+                <div class="flex flex-row">
+                    <div class="flex flex-col items-center">
+                        <label for="walk"
+                            class="material-symbols-outlined text-4xl peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
+                            directions_walk
+                        </label>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <p class="text-lg font-bold">12:15 pm</p>
+
+                        <!-- Location to location -->
+                        <div class="flex flex-row space-x-2 text-xs mt-2 text-slate-200	">
+                            <p>Yaletown</p>
+                            <label for="arrow_forward"
+                                class="material-symbols-outlined peer-checked:bg-accent peer-checked:text-primary text-background cursor-pointer text-xs">
+                                arrow_forward
+                            </label>
+                            <p>Vancouver City Center</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav id="footerPlaceholder"></nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="../scripts/firebaseAPI_DTC07.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+
+
+</body>
+
+</html>

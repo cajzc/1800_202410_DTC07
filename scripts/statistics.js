@@ -24,7 +24,7 @@ const options = {
       opacityFrom: 0.55,
       opacityTo: 0,
       shade: "#1C64F2",
-      gradientToColors: ["#1C64F2"],
+      gradientToColors: ["#FE9503"],
     },
   },
   dataLabels: {
@@ -46,7 +46,7 @@ const options = {
     {
       name: "Distance",
       data: [3.7, 5.2, 1.1, 0.8, 2.7, 1.8],
-      color: "#1A56DB",
+      color: "#FE9503",
     },
   ],
   xaxis: {

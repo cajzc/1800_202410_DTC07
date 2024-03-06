@@ -10,10 +10,12 @@ function loadSkeleton() {
             // Do something for the user here.
             console.log($('#navbarPlaceholder').load('./pages/nav_after_login.html'));
             console.log($('#footerPlaceholder').load('./pages/footer.html'));
+            console.log($('#reviewBox').load('./pages/review_box_templete.html'));
         } else {
             // No user is signed in.
             console.log($('#navbarPlaceholder').load('../pages/nav_before_login.html'));
             console.log($('#footerPlaceholder').load('../pages/footer.html'));
+            console.log($('#reviewBox').load('./pages/review_box_templete.html'));
 
         }
     });

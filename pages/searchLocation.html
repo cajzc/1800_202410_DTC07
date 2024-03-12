@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +62,7 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-        <!-- Navbar -->
+    <!-- Navbar -->
     <header>
         <nav id="navbarPlaceholder"></nav>
     </header>
@@ -93,8 +91,10 @@
         <!-- Location Description box -->
         <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
             <div class="flex justify-between mb-4">
-                <button id="detailButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">Detail</button>
-                <button id="reviewsButton" class="px-4 py-2 rounded-md bg-gray-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400">Reviews</button>
+                <button id="detailButton"
+                    class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">Detail</button>
+                <button id="reviewsButton"
+                    class="px-4 py-2 rounded-md bg-gray-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400">Reviews</button>
             </div>
             <div id="detailContent">
                 <h2 class="text-xl font-semibold text-gray-800 mb-2">Location Details</h2>
@@ -112,42 +112,44 @@
                     <p class="text-gray-600">Description: Great experience! Highly recommended.</p>
                 </div>
 
-                
+
                 <!-- "More Reviews" button initially hidden -->
                 <div class="text-center mt-4 hidden" id="moreReviewsButtonContainer">
-                    <button id="moreReviewsButton" class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">More Reviews</button>
+                    <button id="moreReviewsButton"
+                        class="px-4 py-2 rounded-md bg-blue-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-400">More
+                        Reviews</button>
                 </div>
             </div>
         </div>
-        
+
         <script>
             // JavaScript to toggle visibility of review section and "More Reviews" button
-            document.getElementById("detailButton").addEventListener("click", function() {
+            document.getElementById("detailButton").addEventListener("click", function () {
                 var reviewsContent = document.getElementById("reviewsContent");
                 var moreReviewsButtonContainer = document.getElementById("moreReviewsButtonContainer");
-                
+
                 // Hide review section and "More Reviews" button
                 reviewsContent.classList.add("hidden");
                 moreReviewsButtonContainer.classList.add("hidden");
             });
-        
-            document.getElementById("reviewsButton").addEventListener("click", function() {
+
+            document.getElementById("reviewsButton").addEventListener("click", function () {
                 var reviewsContent = document.getElementById("reviewsContent");
                 var moreReviewsButtonContainer = document.getElementById("moreReviewsButtonContainer");
-                
+
                 // Show review section and "More Reviews" button
                 reviewsContent.classList.remove("hidden");
                 moreReviewsButtonContainer.classList.remove("hidden");
             });
-        
+
             // JavaScript to redirect to review.html when "More Reviews" button is clicked
-            document.getElementById("moreReviewsButton").addEventListener("click", function() {
+            document.getElementById("moreReviewsButton").addEventListener("click", function () {
                 window.location.href = "review.html";
             });
         </script>
-        
-        
-        
+
+
+
     </main>
 
     <footer
@@ -203,9 +205,7 @@
     <script src="../scripts/firebaseAPI_DTC07.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>
-    <script>
-        logout()
-    </script>
+
 
 </body>
 

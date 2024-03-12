@@ -68,11 +68,11 @@
                 id="transferButton">Transfer</button>
         </div>
 
-        <div>
+        <div id="transferOptions">
             <div class="flex container justify-center mx-auto mt-6 gap-4 md:flex-row flex-col mb-4">
                 <div class="flex gap-4 justify-center">
                     <div class="text-center">
-                        <input type="radio" id="bus" name="transport" class="hidden peer">
+                        <input type="radio" id="bus" name="transport" class="hidden peer" checked>
                         <label for="bus"
                             class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
                             directions_bus
@@ -88,10 +88,10 @@
                         <h2 class="text-primary">Car</h2>
                     </div>
                     <div class="text-center">
-                        <input type="radio" id="train" name="transport" class="hidden peer">
-                        <label for="train"
+                        <input type="radio" id="subway" name="transport" class="hidden peer">
+                        <label for="subway"
                             class="material-symbols-outlined mb-2 text-7xl bg-primary shadow-lg shadow-primary hover:shadow-accent peer-checked:bg-accent peer-checked:text-primary p-2 rounded-lg text-background cursor-pointer">
-                            train
+                            directions_subway
                         </label>
                         <h2 class="text-primary">Train</h2>
                     </div>
@@ -147,9 +147,6 @@
     <script src="../scripts/firebaseAPI_DTC07.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>
-    <script>
-        logout()
-    </script>
 
 
 </body>

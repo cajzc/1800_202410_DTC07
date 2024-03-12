@@ -136,24 +136,29 @@
     .menu>li:not(:last-child) {
       border-bottom: 1px solid #444;
     }
+
+    .menu>li:last-child {
+      background-color: #aa3535;
+    }
   }
 </style>
 
-<section class="top-nav bg-primary fixed top-0 right-0 left-0 z-10">
+<section class="top-nav bg-primary fixed top-0 right-0 left-0 z-10 ">
   <div>
-    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="images/Logo.png" class="h-8" alt="Logo">
-    </a>
+    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="../images/Logo.png" class="h-8" alt="Logo">
+    </div>
   </div>
   <input id="menu-toggle" type="checkbox" />
   <label class='menu-button-container' for="menu-toggle">
     <div class='menu-button'></div>
   </label>
   <ul class="menu">
-    <li>Home</li>
-    <li>Your Ratings</li>
-    <li>History</li>
-    <li>Support</li>
-    <li>About</li>
+    <li><a href="../pages/main.html">Home</a></li>
+    <li><a href="../pages/support_page.html">Support</a></li>
+    <li><a href="../pages/about_page.html">About</a></li>
+    <li><a href="../pages/about_page.html">My Profile (NO LINK YET)</a></li>
+    <li><a href="../index.html" clas>Log out</a></li>
+
   </ul>
 </section>

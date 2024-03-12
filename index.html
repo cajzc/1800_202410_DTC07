@@ -59,6 +59,12 @@
 
 
 <body class="bg-background">
+    <script src="./scripts/firebaseAPI_DTC07.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script>
+        logout()
+    </script>
 
     <!------------------------------>
     <!-- Your HTML Layout go here -->
@@ -70,19 +76,13 @@
     </header>
     <div>
         <!-- Welcome message -->
-        <div class="bg-inherit text-center text-primary mt-24 text-2xl md:text-5xl">Stay ahead of traffic<br><span
+        <div class="bg-inherit text-center text-primary pt-24 text-2xl md:text-5xl">Stay ahead of traffic<br><span
                 class="text-lg md:text-3xl">En-Route Commute</span></div>
 
         <div class="flex justify-center mt-4 text-primary text-center gap-2">
-            <button class="bg-secondary rounded px-4 py-2 shadow-md shadow-primary md: text-xl">
-                <span class="text-slate-300 font-bold">Sign Up</span>
-            </button>
             <a href="pages/login.html"
                 class="btn btn-info bg-accent rounded px-4 py-2 shadow-md shadow-primary md: text-xl"
                 role="button"><span class="font-bold">Sign In</span></a>
-
-
-            </button>
         </div>
     </div>
     <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
@@ -109,29 +109,7 @@
                 <!-- Search div  bg-gray-800 opacity-70-->
         </section>
         <!-- Stastistics boxes -->
-        <section class=" flex flex-box flex-col md:flex-row md:justify-between gap-1 mx-auto mb-16 md:mt-6 max-w-full">
-            <div class="my-2">
-                <button
-                    class="justify-between bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
-                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
-                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
-                </button>
-            </div>
-            <div class="my-2">
-                <button
-                    class="bg-secondary text-slate-300 rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
-                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
-                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
-                </button>
-            </div>
-            <div class="my-2">
-                <button
-                    class="bg-secondary text-slate-300 rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
-                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
-                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
-                </button>
-            </div>
-        </section>
+
     </main>
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
@@ -142,12 +120,8 @@
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
 
-    <script src="./scripts/firebaseAPI_DTC07.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script>
-        logout()
-    </script>
+
+
 
 </body>
 

@@ -15,15 +15,10 @@ function setup() {
         $("#transferOptions").show()
     }
 
-    $("#transferButton").on("click", () => {
-        $("#transferButton").hide()
-        $("#transferOptions").show()
-    })
 
     // $("#transferSelect").on("click", () => { selectTransfer() })
 
     $("#stopButton").on("click", () => {
-        localStorage.clear()
         $("#currentCommuteIcon").attr("name", "play")
         $("#currentCommuteIcon").text("play_circle")
     })

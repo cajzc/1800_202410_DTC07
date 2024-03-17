@@ -1,72 +1,102 @@
+async function fetchOptions(user_id, option) {
+  return new Promise((resolve, reject) => {
+    db.collection('commutes').doc(user_id)
+    .onSnapshot(userDoc => {
+      var f_input = userDoc.data()[option];
+      resolve(f_input);
+    });
+  });
+}
 
-const options = {
-  chart: {
-    height: "100%",
-    maxWidth: "100%",
-    type: "area",
-    fontFamily: "Inter, sans-serif",
-    dropShadow: {
+let selectedOption = "distance";
+
+document.querySelectorAll('#changeStatisticsDropdown a').forEach(option => {
+    option.addEventListener('click', async function() {
+        selectedOption = this.textContent;
+        console.log(`Selected option: ${selectedOption}`);
+
+        if (selectedOption === "Cost") {
+            costClick = true;
+            let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'cost');
+            createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
+        }
+    });
+});
+
+function createGraph(title, f_input, s_input, t_input, ft_input, fv_input, sx_input, sv_input){  const options = {
+    chart: {
+      height: "100%",
+      maxWidth: "100%",
+      type: "area",
+      fontFamily: "Inter, sans-serif",
+      dropShadow: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    tooltip: {
+      enabled: true,
+      x: {
+        show: false,
+      },
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        opacityFrom: 0.55,
+        opacityTo: 0,
+        shade: "#1C64F2",
+        gradientToColors: ["#FE9503"],
+      },
+    },
+    dataLabels: {
       enabled: false,
     },
-    toolbar: {
+    stroke: {
+      width: 6,
+    },
+    grid: {
+      show: false,
+      strokeDashArray: 4,
+      padding: {
+        left: 2,
+        right: 2,
+        top: 0
+      },
+    },
+
+    series: [
+      // REPLACE THIS WITH FIRESTORE INFORMATION
+      {
+        name: `${title}`,
+        data: [f_input, s_input, t_input, ft_input, fv_input, sx_input, sv_input],
+        color: "#FE9503",
+      },
+    ],
+    
+    xaxis: {
+      // REPLACE THIS WITH FIRESTORE INFORMATION
+      categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
       show: false,
     },
-  },
-  tooltip: {
-    enabled: true,
-    x: {
-      show: false,
-    },
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      opacityFrom: 0.55,
-      opacityTo: 0,
-      shade: "#1C64F2",
-      gradientToColors: ["#FE9503"],
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    width: 6,
-  },
-  grid: {
-    show: false,
-    strokeDashArray: 4,
-    padding: {
-      left: 2,
-      right: 2,
-      top: 0
-    },
-  },
-  series: [
-    {
-      name: "Distance",
-      data: [3.7, 5.2, 1.1, 0.8, 2.7, 1.8],
-      color: "#FE9503",
-    },
-  ],
-  xaxis: {
-    categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
-    labels: {
-      show: false,
-    },
-    axisBorder: {
-      show: false,
-    },
-    axisTicks: {
-      show: false,
-    },
-  },
-  yaxis: {
-    show: false,
-  },
+  }
+
+  if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(document.getElementById("area-chart"), options);
+    chart.render();
+  }
 }
 
-if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-  const chart = new ApexCharts(document.getElementById("area-chart"), options);
-  chart.render();
-}

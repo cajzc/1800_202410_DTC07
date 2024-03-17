@@ -113,6 +113,31 @@ function togglePause(user) {
     }
 }
 
+function timePauses(pause, waitPause) {
+    let totalPauseTime = 0
+    totalPauseTime += pause.data().pauseEndTime.toMillis() - pause.data().pauseStartTime.toMillis()
+    waitPause(totalPauseTime)
+}
+
+function timeLegs(leg, waitLeg) {
+    let totalTime = 0
+    totalTime += (leg.data().endTime.toMillis() - leg.data().startTime.toMillis())
+    waitLeg(totalTime)
+}
+
+function loopPauses(path, legID, waitPause) {
+    let totalPauseTime = 0
+    path.doc(legID).collection("pauses").get().then(eachPause => {
+        eachPause.forEach(pause => {
+            timePauses(pause, (pauseTime) => {
+                totalPauseTime += pauseTime
+                console.log(pauseTime)
+            })
+        })
+    }).then(() => { waitPause(totalPauseTime) })
+
+}
+
 function endCommute(user, end_commute) {
 
     let commuteID = localStorage.getItem("currentCommuteID")
@@ -123,16 +148,20 @@ function endCommute(user, end_commute) {
         let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs")
 
         path.get().then(commuteLeg => {
+            console.log(commuteLeg.length)
             commuteLeg.forEach(leg => {
 
-                path.doc(leg.id).collection("pauses").get().then(eachPause => {
-                    eachPause.forEach(pause => {
-                        totalPauseTime += (pause.data().pauseEndTime.toMillis() - pause.data().pauseStartTime.toMillis())
+                loopPauses(path, leg.id, (pauseTime) => {
+                    totalPauseTime = pauseTime
+                    timeLegs(leg, (legTime) => {
+                        totalTime += legTime
+                        console.log(legTime)
                     })
                 })
 
-                totalTime += (leg.data().endTime.toMillis() - leg.data().startTime.toMillis())
             })
+
+            console.log("here")
 
         }).then(() => {
             console.log(totalTime)
@@ -275,7 +304,7 @@ function setup() {
 
             $("#stopButton").on("click", () => {
                 endCommute(user, () => {
-                    window.location.href = "../pages/end_commute.html"
+                    // window.location.href = "../pages/end_commute.html"
                 })
 
             })

@@ -52,6 +52,9 @@
         }
     </style>
 
+    <!-- MapBox api and links go here -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
 
     <!-- Other libraries go here -->
     <link rel="stylesheet"
@@ -80,14 +83,19 @@
     <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
         <section class="mt-2">
             <!-- Map Section -->
-            <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip max-w-xl m-auto">
+            <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip m-auto" style="max-width:425px;">
                 <div class="container">
                     <div class="relative w-50%">
-                        <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-123.12929391860963%2C49.277772720183535%2C-123.10920953750612%2C49.287221020960025&amp;layer=transportmap" style="border: 1px solid black"></iframe>
-                        <br/>
-                        <small>
-                            <a href="https://www.openstreetmap.org/#map=16/49.2825/-123.1193&amp;layers=T">View Larger Map</a>
-                        </small>
+                        <div id='map' style='width: 425px; height: 300px;'></div>
+                        <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6cjByNWttdiJ9.fSlamwdtxZGEgeGA9JuDfw';
+                        const map = new mapboxgl.Map({
+                            container: 'map', // container ID
+                            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                            center: [-74.5, 40], // starting position [lng, lat]
+                            zoom: 9, // starting zoom
+                        });
+                        </script>
                         <div class="absolute top-0 left-0 right-0 px-4 py-2">
                             <div class="flex flex-row justify-center">
                                 <button class="bg-gray-500 opacity-60 rounded px-20 p-4 relative">

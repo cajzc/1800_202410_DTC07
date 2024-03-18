@@ -1,5 +1,5 @@
 async function fetchOptions(user_id, option) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     db.collection('commutes').doc(user_id)
     .onSnapshot(userDoc => {
       var f_input = userDoc.data()[option];
@@ -16,10 +16,27 @@ document.querySelectorAll('#changeStatisticsDropdown a').forEach(option => {
         console.log(`Selected option: ${selectedOption}`);
 
         if (selectedOption === "Cost") {
-            costClick = true;
             let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'cost');
             createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
+            document.getElementById('total').innerHTML = `$${f_input}`
+            document.getElementById('dropdownStatisticsButton').innerHTML ='Cost'
+            document.getElementById('subheading').innerHTML = 'Spent this week'
         }
+
+        else if (selectedOption === "Time") {
+          let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'time');
+          createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
+          document.getElementById('dropdownStatisticsButton').innerHTML ='Time'
+          document.getElementById('total').innerHTML = `$${f_input}`
+          document.getElementById('subheading').innerHTML = 'Spent this week'
+      }
+        else if (selectedOption === "Distance") {
+          let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'distance');
+          createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
+          document.getElementById('dropdownStatisticsButton').innerHTML ='Distance'
+          document.getElementById('total').innerHTML = `$${f_input}`
+          document.getElementById('subheading').innerHTML = 'Travelled this week'
+      }
     });
 });
 

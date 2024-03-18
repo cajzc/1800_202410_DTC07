@@ -1,6 +1,4 @@
-
 function startCommute(user, start_commute) {
-    // Check if the user is logged in:
 
     commuteID = db.collection("users").doc(user.uid).collection("commutes").doc().id
     var currentUserCommute = db.collection("users").doc(user.uid).collection("commutes");
@@ -9,16 +7,16 @@ function startCommute(user, start_commute) {
     });
 
     localStorage.setItem("currentCommuteID", commuteID)
-    startLeg(user, () => {
-        console.log("commute Started")
 
+    startLeg(user, () => {
         start_commute()
     })
 
-
 }
 
+
 function startLeg(user, start_leg) {
+
     let commuteID = localStorage.getItem("currentCommuteID")
     let legID = localStorage.getItem("currentLegID")
     let legCount = 1
@@ -41,12 +39,13 @@ function startLeg(user, start_leg) {
 
     localStorage.setItem("currentLegID", legID)
 
-    console.log(legID + " started")
     start_leg()
 
 }
 
+
 function setTransit(user) {
+
     let transitType = localStorage.getItem("currentCommute")
     let commuteId = localStorage.getItem("currentCommuteID")
     let legId = localStorage.getItem("currentLegID")
@@ -55,14 +54,15 @@ function setTransit(user) {
         method: transitType
     })
 
-    console.log("transit set to " + transitType)
-
 }
 
+
 function endLeg(user, end_leg) {
+
     let legID = localStorage.getItem("currentLegID")
     let paused = localStorage.getItem("paused")
     let commuteID = localStorage.getItem("currentCommuteID")
+
     if (paused != null)
         togglePause(user)
 
@@ -89,8 +89,8 @@ function endLeg(user, end_leg) {
         end_leg()
     })
 
-
 }
+
 
 function togglePause(user) {
 
@@ -112,6 +112,7 @@ function togglePause(user) {
         })
 
         localStorage.setItem("pauseID", pauseID)
+
     } else {
         localStorage.removeItem("paused")
         $("#pauseButton").text("pause_circle")
@@ -138,35 +139,9 @@ function togglePause(user) {
             localStorage.setItem("pauseID", pauseID)
 
         })
-
-
     }
 }
 
-function timePauses(pause, waitPause) {
-    let totalPauseTime = 0
-    totalPauseTime += pause.data().pauseEndTime.toMillis() - pause.data().pauseStartTime.toMillis()
-    waitPause(totalPauseTime)
-}
-
-function timeLegs(leg, waitLeg) {
-    let totalTime = 0
-    totalTime += (leg.data().endTime.toMillis() - leg.data().startTime.toMillis())
-    waitLeg(totalTime)
-}
-
-function loopPauses(path, legID, waitPause) {
-    let totalPauseTime = 0
-    path.doc(legID).collection("pauses").get().then(eachPause => {
-        eachPause.forEach(pause => {
-            timePauses(pause, (pauseTime) => {
-                totalPauseTime += pauseTime
-                console.log(pauseTime)
-            })
-        })
-    }).then(() => { waitPause(totalPauseTime) })
-
-}
 
 function endCommute(user, end_commute) {
 
@@ -176,12 +151,8 @@ function endCommute(user, end_commute) {
         let commuteTime = localStorage.getItem("totalCommuteTime")
         let pauseTime = localStorage.getItem("totalPauseTime")
 
-        console.log("total  Time" + commuteTime)
-        console.log("pause  Time" + pauseTime)
-
         commuteTime -= pauseTime
 
-        console.log("total  Time after pause" + commuteTime)
         localStorage.clear()
 
         db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).update({
@@ -189,11 +160,8 @@ function endCommute(user, end_commute) {
         })
 
         let hours = Math.floor(commuteTime / 3600)
-        console.log(hours)
         let minutes = Math.floor((commuteTime - hours * 3600) / 60)
-        console.log(minutes)
         let seconds = Math.round((commuteTime - hours * 3600) % 60)
-        console.log(seconds)
         commuteTime = `${hours} hrs, ${minutes} mins, ${seconds} secs`
         console.log(commuteTime)
 
@@ -201,10 +169,11 @@ function endCommute(user, end_commute) {
 
     })
 
-
 }
 
+
 function writeTime(user) {
+
     let commuteId = localStorage.getItem("currentCommuteID")
 
     let currentTime = (firebase.firestore.Timestamp.now().toMillis()) / 1000
@@ -223,20 +192,22 @@ function writeTime(user) {
     `)
     })
 
-
 }
 
+
 function getStartTime(Id, path, get_start_time) {
+
     commuteLeg = path.doc((Id))
     commuteLeg.get().then(firstLeg => {
         let startingTime = firstLeg.data().startTime.toMillis() / 1000
-        //localStorage.setItem("startTime", startingTime)
         get_start_time(startingTime)
     })
 
 }
 
+
 function selectTransfer() {
+
     if ($("#bus").is(":checked")) {
         $("#currentCommuteIcon").attr("name", "bus")
         $("#currentCommuteIcon").text("directions_bus")
@@ -269,32 +240,29 @@ function selectTransfer() {
     }
     $("#transferButton").show()
     $("#transferOptions").hide()
+
 }
 
 
 function setup() {
+
     let currentCommute = localStorage.getItem("currentCommute")
 
     let paused = localStorage.getItem("paused")
 
-
     firebase.auth().onAuthStateChanged(user => {
+
         if (user) {
-
-            console.log(currentCommute)
-
             if (currentCommute == null) {
                 startCommute(user, () => {
                     localStorage.setItem("currentCommute", "started")
                 })
-
             }
 
             $("#transferSelect").on("click", () => {
                 selectTransfer()
                 setTransit(user)
             })
-
 
             if (paused != null) {
                 $("#pauseButton").text("play_circle")
@@ -311,31 +279,18 @@ function setup() {
                 endLeg(user, () => {
                     startLeg(user, () => { })
                 })
-
             })
 
             $("#stopButton").on("click", () => {
                 endCommute(user, () => {
                     window.location.href = "../pages/end_commute.html"
                 })
-
             })
 
         } else {
             console.log("No user is logged in."); // Log a message when no user is logged in
         }
     })
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

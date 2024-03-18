@@ -10,7 +10,7 @@ function populateReviews() {
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-2">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-gray-600">${data.userID}</span>
-                        <span class="material-symbols-outlined">${data.commuteMethod}</span>
+                        <!-- <span class="material-symbols-outlined">${data.commuteMethod}</span> -->
                     </div>
                     <p class="text-gray-800">${data.review_content}</p>
                     <!-- <p class="text-gray-800">Starting Point: ${data.startingPoint}</p> -->

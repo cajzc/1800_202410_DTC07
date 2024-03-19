@@ -96,15 +96,7 @@
                 <div class="container">
                     <div class="relative w-50%">
                             <div id='map' style='width: 576px; height: 300px;'></div>
-                            <script>
-                            mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6cjByNWttdiJ9.fSlamwdtxZGEgeGA9JuDfw';
-                            const map = new mapboxgl.Map({
-                                container: 'map', // container ID
-                                style: 'mapbox://styles/mapbox/streets-v12', // style URL
-                                center: [-74.5, 40], // starting position [lng, lat]
-                                zoom: 9, // starting zoom
-                            });
-                            </script>
+                        
                         <div class="absolute top-0 left-0 right-0 px-4 py-2">
                             <div class="flex flex-row justify-center">
                                 <button class="bg-gray-500 opacity-60 rounded px-20 p-4 relative">
@@ -131,6 +123,7 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
+    <script src="../scripts/map.js"></script>
 
 
 

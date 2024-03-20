@@ -56,6 +56,9 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
     <!-- Other libraries go here -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -88,18 +91,6 @@
                     <div class="relative w-50%">
                         <!-- Map Itself -->
                         <div id='map' style='height: 300px;'></div>
-
-                        <div class="absolute top-0 left-0 right-0 px-4 py-2">
-                            <div class="flex flex-row justify-center">
-                                <button class="bg-gray-500 opacity-60 rounded px-20 p-4 relative">
-                                    <span class="absolute left-1 bottom-1">Search...</span>
-                                    <span class="material-symbols-outlined absolute right-1 bottom-1"
-                                        style="transform: scale(1.25);">
-                                        search
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- Search div  bg-gray-800 opacity-70-->

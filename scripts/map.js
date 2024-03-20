@@ -1,7 +1,25 @@
+// mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6cjByNWttdiJ9.fSlamwdtxZGEgeGA9JuDfw';
+// const map = new mapboxgl.Map({
+//     container: 'map', // container ID
+//     style: 'mapbox://styles/mapbox/streets-v12', // style URL
+//     center: [-74.5, 40], // starting position [lng, lat]
+//     zoom: 9, // starting zoom
+// });
 mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6cjByNWttdiJ9.fSlamwdtxZGEgeGA9JuDfw';
-const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    center: [-74.5, 40], // starting position [lng, lat]
-    zoom: 9, // starting zoom
-});
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [-79.4512, 43.6568],
+        zoom: 13
+    });
+
+    const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: {
+            color: 'orange'
+        },
+        mapboxgl: mapboxgl
+    });
+
+    map.addControl(geocoder);

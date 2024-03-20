@@ -18,7 +18,7 @@
                     colors: {
                         primary: '#292D30',
                         secondary: '#005CA3',
-                        background: '#C4CCCE',
+                        background: 'white',
                         accent: '#FE9503'
                     }
                 }
@@ -51,6 +51,9 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
     <style>
         .material-symbols-outlined {
@@ -59,6 +62,12 @@
                 'wght' 400,
                 'GRAD' 0,
                 'opsz' 24
+        }
+
+        span {
+            font-family: "Itim", cursive;
+            font-weight: 400;
+            font-style: normal;
         }
     </style>
 
@@ -81,12 +90,17 @@
     <div>
 
     </div>
-    <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
-        <div class="mt-24 text-4xl font-bold">
-            Support
+    <main class="mt-20 mr-10 ml-10">
+        <div class="">
+            <div class="text-4xl mb-5">
+                <span class="font-bold stroke-gray-950 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">NEED SOME HELP?</span>
+                <span class="material-symbols-outlined text-red-500 text-3xl">location_on</span>
+            </div>
         </div>
-        <div class="text-2xl">
-            Contact our support line at: <br> <span class="font-bold">enroutesupport@gmail.com</span>
+        <div class="text-center border-4 border-t-rose-500 border-b-rose-500 border-r-white border-l-white">
+            <div class="text-2xl mt-20 mb-20">
+                <span>Contact our support line at: </span><br> <span class="font-bold">enroutesupport@gmail.com</span>
+            </div>
         </div>
     </main>
     <!-- our own footer goes here-->

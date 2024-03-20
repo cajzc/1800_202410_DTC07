@@ -53,8 +53,8 @@
     </style>
 
     <!-- MapBox api and links go here -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 
     <!-- Other libraries go here -->
     <link rel="stylesheet"
@@ -86,6 +86,7 @@
             <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip max-w-xl m-auto">
                 <div class="container">
                     <div class="relative w-50%">
+<<<<<<< HEAD
                         <div id='map' style='width: 576px; height: 300px;'></div>
                         <script>
                             mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6cjByNWttdiJ9.fSlamwdtxZGEgeGA9JuDfw';
@@ -96,6 +97,11 @@
                                 zoom: 9, // starting zoom
                             });
                         </script>
+=======
+                        <!-- Map Itself -->
+                        <div id='map' style='height: 300px;'></div>
+
+>>>>>>> 3a47b6beb6e71f3af5fdd8f19767b69ec745da7b
                         <div class="absolute top-0 left-0 right-0 px-4 py-2">
                             <div class="flex flex-row justify-center">
                                 <button class="bg-gray-500 opacity-60 rounded px-20 p-4 relative">
@@ -147,6 +153,7 @@
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/map.js"></script>
 </body>
 
 </html>

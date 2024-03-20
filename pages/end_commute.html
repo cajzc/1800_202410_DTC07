@@ -107,8 +107,11 @@
                 class="block p-2.5 w-full text-sm text-primary bg-gray-50 rounded-lg border border-gray-300 focus:ring-secondary focus:border-blue-500 "
                 placeholder="Leave a Review..."></textarea>
             <br>
-            <a href="../pages/main.html" id="submitReview"
-                class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Submit</a>
+            <button id="submitReview"
+                class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Submit</button>
+
+            <a href="../pages/main.html" onclick="localStorage.clear()"
+                class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Skip</a>
         </div>
     </div>
 
@@ -116,6 +119,7 @@
     <script src="../scripts/firebaseAPI_DTC07.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/review.js"></script>
 
 
 

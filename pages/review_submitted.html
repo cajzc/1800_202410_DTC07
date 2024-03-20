@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En-Route</title>
+
+    <!-- Tailwind Library CSS CDN go here -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#292D30',
+                        secondary: '#005CA3',
+                        background: '#C4CCCE',
+                        accent: '#FE9503'
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <!-- Other libraries go here -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+
+<body class="bg-background">
+    <header>
+        <nav id="navbarPlaceholder"></nav>
+    </header>
+
+    <div class="p-6 pt-16">
+
+        <div class="text-center text-lg">
+            <p>Thanks for sharing your thoughts!</p>
+        </div>
+
+
+        <a href="../pages/main.html" id="goHome"
+            class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Home</a>
+    </div>
+    </div>
+
+    <nav id="footerPlaceholder"></nav>
+    <script src="../scripts/firebaseAPI_DTC07.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/review.js"></script>
+
+
+
+</body>
+
+</html>

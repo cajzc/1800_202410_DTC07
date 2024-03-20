@@ -135,8 +135,6 @@ function endCommute(user, end_commute) {
 
         commuteTime -= pauseTime
 
-        localStorage.clear()
-
         db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).update({
             commuteTotalTime: commuteTime
         })

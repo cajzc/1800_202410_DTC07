@@ -66,8 +66,6 @@ function endLeg(user, end_leg) {
     if (paused != null)
         togglePause(user)
 
-    localStorage.removeItem("pauseID")
-
     let legEndTime = firebase.firestore.Timestamp.now()
     let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs")
 
@@ -91,27 +89,18 @@ function endLeg(user, end_leg) {
 
 }
 
-
 function togglePause(user) {
 
-    let pauseID = localStorage.getItem("pauseID")
     let paused = localStorage.getItem("paused")
     let commuteId = localStorage.getItem("currentCommuteID")
     let legId = localStorage.getItem("currentLegID")
-
-    if (pauseID == null)
-        pauseID = "pause1"
+    let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteId).collection("commuteLegs")
+    let time = firebase.firestore.Timestamp.now()
 
     if (paused == null) {
         $("#pauseButton").text("play_circle")
         $("#commuteText").text("Your Commute is Paused!")
         localStorage.setItem("paused", 1)
-
-        db.collection("users").doc(user.uid).collection("commutes").doc(commuteId).collection("commuteLegs").doc(legId).collection("pauses").doc(pauseID).set({
-            startTime: firebase.firestore.Timestamp.now()
-        })
-
-        localStorage.setItem("pauseID", pauseID)
 
     } else {
         localStorage.removeItem("paused")
@@ -119,28 +108,21 @@ function togglePause(user) {
 
         writeTime(user)
 
-        let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteId).collection("commuteLegs").doc(legId).collection("pauses")
-        let pauseEndTime = firebase.firestore.Timestamp.now()
-        path.doc(pauseID).update({
-            endTime: pauseEndTime
-        })
-
-        getStartTime(pauseID, path, (startTime) => {
+        getPauseStartTime(path, (startTime) => {
             let totalPauseTime = localStorage.getItem("totalPauseTime")
             if (totalPauseTime != null) {
-                totalPauseTime += parseFloat((parseFloat(pauseEndTime.toMillis()) / 1000) - parseFloat(startTime))
-                localStorage.setItem("totalPauseTime", totalPauseTime)
+                totalPauseTime = parseFloat(totalPauseTime) + parseFloat((parseFloat(time.toMillis()) / 1000) - parseFloat(startTime))
             } else {
-                localStorage.setItem("totalPauseTime", parseFloat((parseFloat(pauseEndTime.toMillis()) / 1000) - parseFloat(startTime)))
+                totalPauseTime = parseFloat((parseFloat(time.toMillis()) / 1000) - parseFloat(startTime))
             }
-
-            pauseCount = parseInt(pauseID.slice(5)) + 1
-            pauseID = `pause${pauseCount}`
-            localStorage.setItem("pauseID", pauseID)
-
+            localStorage.setItem("totalPauseTime", totalPauseTime)
         })
     }
+    path.doc(legId).update({
+        pauses: firebase.firestore.FieldValue.arrayUnion(time)
+    })
 }
+
 
 
 function endCommute(user, end_commute) {
@@ -152,8 +134,6 @@ function endCommute(user, end_commute) {
         let pauseTime = localStorage.getItem("totalPauseTime")
 
         commuteTime -= pauseTime
-
-        localStorage.clear()
 
         db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).update({
             commuteTotalTime: commuteTime
@@ -192,6 +172,14 @@ function writeTime(user) {
     `)
     })
 
+}
+
+
+function getPauseStartTime(path, getPauseTime) {
+    path.doc("leg1").get().then(leg => {
+        let startingTime = parseFloat(leg.data().pauses[leg.data().pauses.length - 1].toMillis()) / 1000
+        getPauseTime(startingTime)
+    })
 }
 
 

@@ -21,11 +21,34 @@ function populateReviews() {
             </div>
         `;
 
-        document.getElementById("reviewsContainer").innerHTML += reviewBox;
+            document.getElementById("reviewsContainer").innerHTML += reviewBox;
         });
     }).catch((error) => {
         console.error("Error getting reviews: ", error)
     })
 }
 
-populateReviews();
+
+function submitReview(reviewSubmitted) {
+    commuteID = localStorage.getItem("currentCommuteID")
+
+    //code goes here
+
+
+    reviewSubmitted()
+}
+
+
+function main() {
+    populateReviews();
+
+    $("#submitReview").on("click", () => {
+        submitReview(() => {
+            localStorage.clear()
+            window.location.href = "../pages/review_submitted.html"
+        })
+    })
+
+}
+
+main();

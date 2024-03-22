@@ -1,4 +1,4 @@
-
+var currentUser
 function populateReviews() {
     const ratingsRef = db.collection("ratings");
 
@@ -38,8 +38,62 @@ function submitReview(reviewSubmitted) {
     reviewSubmitted()
 }
 
+function loadUser() {
+
+    firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+
+            //go to the correct user document by referencing to the user uid
+            currentUser = db.collection("users").doc(user.uid)
+            //get the document for current user.
+            currentUser.get()
+                .then(userDoc => {
+                    let favorite_Locations = userDoc.data().favoriteLocationsList
+                    if (favorite_Locations != null) {
+                        favorite_Locations.forEach((faveLocation) => {
+                            destination.innerHTML += `
+                            <option value="${faveLocation}" id="${faveLocation}Fave">${faveLocation}</option>
+                            `
+                        })
+
+                    }
+                })
+        } else {
+            // No user is signed in.
+            console.log("No user is signed in");
+        }
+    });
+
+}
+
+
+function addFavoriteLocation() {
+    console.log(destination.value)
+    if (destination.value == "addMore") {
+        faveLocation = prompt("Please enter a location name")
+        if (faveLocation == "" || faveLocation == null) {
+            alert("Please enter a location")
+            destination.value = ""
+        } else if ($(`#${faveLocation}Fave`).length != 0) {
+            alert("That location is already saved!")
+            destination.value = ""
+        } else {
+            currentUser.update({
+                favoriteLocationsList: firebase.firestore.FieldValue.arrayUnion(faveLocation)
+            })
+            destination.innerHTML += `
+                            <option value="${faveLocation}" id="${faveLocation}Fave">${faveLocation}</option>
+                            `
+            destination.value = faveLocation
+        }
+
+    }
+}
+
 
 function main() {
+    loadUser();
     populateReviews();
 
     $("#submitReview").on("click", () => {
@@ -48,6 +102,7 @@ function main() {
             window.location.href = "../pages/review_submitted.html"
         })
     })
+
 
 }
 

@@ -25,7 +25,8 @@ function populateUserInfo() {
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
                     }
-                    if (favorite_Locations != null) {
+                    if (favorite_Locations != null && favorite_Locations.length > 0) {
+                        console.log(favorite_Locations)
                         favorite_Locations.forEach((faveLocation) => {
                             favoriteLocations.innerHTML += `
                             <div>${faveLocation}<a id="${faveLocation}Fave" onclick="removeFavoriteLocation('${faveLocation}', this)">X</a></div>

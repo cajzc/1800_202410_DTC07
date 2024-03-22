@@ -50,7 +50,8 @@ function loadUser() {
             currentUser.get()
                 .then(userDoc => {
                     let favorite_Locations = userDoc.data().favoriteLocationsList
-                    if (favorite_Locations != null) {
+                    console.log(favorite_Locations)
+                    if (favorite_Locations != null && favorite_Locations.length > 0) {
                         favorite_Locations.forEach((faveLocation) => {
                             destination.innerHTML += `
                             <option value="${faveLocation}" id="${faveLocation}Fave">${faveLocation}</option>

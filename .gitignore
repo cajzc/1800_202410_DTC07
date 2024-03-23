@@ -3,3 +3,5 @@
 node_modules/
 .vscode/
 firebaseAPI_DTC07.js
+scripts/package-lock.json
+scripts/package.json

@@ -59,13 +59,17 @@
     <main class="bg-background">
 
         <div class="container px-10 pt-24 h-48 mx-auto py-4 text-primary text-center">
-            <h1 class="text-2xl inline-block px-10 py-4 rounded-xl" id="commuteText">Enjoy your commute</H1>
+            <h1 class="text-2xl inline-block px-10 py-4 rounded-xl">Enjoy your commute!</H1>
         </div>
 
         <div class="container text-center mx-auto">
             <button
                 class="text-center bg-secondary py-2 px-6 rounded-xl text-2xl text-background font-bold shadow-lg shadow-primary hover:shadow-accent"
                 id="transferButton">Transfer</button>
+            <button
+                class="text-center bg-secondary py-2 px-2 rounded-xl text-2xl text-background font-bold shadow-lg shadow-primary hover:shadow-accent"
+                id="undoSelectTransfer">Undo</button>
+
         </div>
 
         <div id="transferOptions">
@@ -131,13 +135,17 @@
         </div>
 
 
-        <div class="flex gap-6 justify-center mt-10 mb-24">
+        <div class="flex gap-6 justify-center mt-10 mb-10">
             <button
                 class="material-symbols-outlined text-center bg-primary p-2 rounded-full text-9xl text-secondary font-bold shadow-lg shadow-primary hover:shadow-accent"
                 id="pauseButton">pause_circle</button>
             <button
                 class="material-symbols-outlined text-center bg-primary p-2 rounded-full text-9xl text-accent font-bold shadow-lg shadow-primary hover:shadow-accent"
                 id="stopButton">stop_circle</button>
+        </div>
+
+        <div class="container px-10 pt-4 mx-auto py-4  text-primary text-center">
+            <h1 class="text-2xl inline-block px-10 py-4 rounded-xl mb-24" id="commuteText"></H1>
         </div>
 
     </main>

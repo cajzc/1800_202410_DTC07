@@ -68,8 +68,9 @@
 
         <div class="text-center">
             <p>Select your destination:</p>
-            <select name="destination" id="destination" class="rounded-md p-2 shadow-primary shadow-md mt-2">
-                <option value="" disabled select>Select your destination</option>
+            <select name="destination" id="destination" onchange="addFavoriteLocation()"
+                class="rounded-md p-2 shadow-primary shadow-md mt-2">
+                <option value="" selected="selected" disabled select>Select your destination</option>
                 <option value="addMore" id="addMore">Add More...</option>
             </select>
         </div>

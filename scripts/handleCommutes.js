@@ -19,6 +19,7 @@ function startLeg(user, start_leg) {
 
     let commuteID = localStorage.getItem("currentCommuteID")
     let legID = localStorage.getItem("currentLegID")
+    let location
     let legCount = 1
     if (legID != null) {
         legCount = parseInt(legID.slice(3)) + 1
@@ -27,14 +28,18 @@ function startLeg(user, start_leg) {
         legID = "leg1"
     }
 
+    getLocation(() => {
+        location = localStorage.getItem("currentPosition")
+        //location = geofire.geohashForLocation(location)
+    })
+
     db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs").doc(legID).set({
         startTime: firebase.firestore.Timestamp.now(),
         endTime: firebase.firestore.Timestamp.now(),
         cost: 0,
         method: "walk",
         leg: legCount,
-        /*startLocation: navigator.geolocation.getCurrentPosition(),
-        endLocation: navigator.geolocation.getCurrentPosition()*/
+        startLocation: location
     })
 
     localStorage.setItem("currentLegID", legID)
@@ -62,16 +67,21 @@ function endLeg(user, end_leg) {
     let legID = localStorage.getItem("currentLegID")
     let paused = localStorage.getItem("paused")
     let commuteID = localStorage.getItem("currentCommuteID")
+    let location
 
     if (paused != null)
         togglePause(user)
 
     let legEndTime = firebase.firestore.Timestamp.now()
     let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs")
+    getLocation(() => {
+        location = localStorage.getItem("currentPosition")
+        //location = geofire.geohashForLocation(location)
+    })
 
     path.doc(legID).update({
-        endTime: legEndTime
-        /*endLocation: navigator.geolocation.getCurrentPosition()*/
+        endTime: legEndTime,
+        endLocation: location
     })
 
     getStartTime(legID, path, (startTime) => {
@@ -105,8 +115,6 @@ function togglePause(user) {
     } else {
         localStorage.removeItem("paused")
         $("#pauseButton").text("pause_circle")
-
-        writeTime(user)
 
         getPauseStartTime(path, (startTime) => {
             let totalPauseTime = localStorage.getItem("totalPauseTime")
@@ -155,22 +163,27 @@ function endCommute(user, end_commute) {
 function writeTime(user) {
 
     let commuteId = localStorage.getItem("currentCommuteID")
+    let pauseTime = localStorage.getItem("totalPauseTime")
+    let paused = localStorage.getItem("paused")
 
-    let currentTime = (firebase.firestore.Timestamp.now().toMillis()) / 1000
+    let currentTime = parseFloat(firebase.firestore.Timestamp.now().toMillis()) / 1000 - pauseTime
     let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteId).collection("commuteLegs")
 
-    getStartTime("leg1", path, (startTime) => {
-        let commuteStartTime = startTime//localStorage.getItem("startTime")
-        let totalTime = currentTime - commuteStartTime
-        let hours = Math.floor(totalTime / 3600)
-        let minutes = Math.floor((totalTime - hours * 3600) / 60)
-        let seconds = Math.floor((totalTime - hours * 3600) % 60)
 
-        $("#commuteText").html(` 
-    You're on the way!<br>Current Time:<br>
+    if (paused != 1) {
+        getStartTime("leg1", path, (startTime) => {
+            let commuteStartTime = startTime
+            let totalTime = currentTime - commuteStartTime
+            let hours = Math.floor(totalTime / 3600)
+            let minutes = Math.floor((totalTime - hours * 3600) / 60)
+            let seconds = Math.floor((totalTime - hours * 3600) % 60)
+
+            $("#commuteText").html(` 
+    <span class="text-3xl">You're on the way!</span><br>Current Time:<br>
     ${hours} hrs, ${minutes} mins, ${seconds} secs
     `)
-    })
+        })
+    }
 
 }
 
@@ -231,6 +244,19 @@ function selectTransfer() {
 
 }
 
+function getLocation(get_location) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(savePosition);
+        get_location()
+    } else {
+        alert("Geolocation is not supported by this browser.")
+    }
+}
+
+function savePosition(position) {
+    localStorage.setItem("currentPosition", [position.coords.latitude, position.coords.longitude])
+}
+
 
 function setup() {
 
@@ -252,6 +278,11 @@ function setup() {
                 setTransit(user)
             })
 
+            $("#undoSelectTransfer").on("click", () => {
+                $("#transferButton").hide()
+                $("#transferOptions").show()
+            })
+
             if (paused != null) {
                 $("#pauseButton").text("play_circle")
                 $("#commuteText").text("Your Commute is Paused!")
@@ -271,9 +302,20 @@ function setup() {
 
             $("#stopButton").on("click", () => {
                 endCommute(user, () => {
+                    localStorage.removeItem("currentCommute")
                     window.location.href = "../pages/end_commute.html"
                 })
             })
+
+            $(function () {
+                setInterval(() => {
+
+                    $("commuteText").load("../pages/write_time.html", writeTime(user))
+
+                }, 1000)
+            })
+
+
 
         } else {
             console.log("No user is logged in."); // Log a message when no user is logged in

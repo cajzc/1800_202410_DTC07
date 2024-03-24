@@ -50,6 +50,20 @@ stars.forEach((star, index) => {
 function submitReview(reviewSubmitted) {
     commuteID = localStorage.getItem("currentCommuteID");
     const reviewContent = document.getElementById('message').value;
+    // Get the star rating
+		// Get all the elements with the class "star" and store them in the 'stars' variable
+        const stars = document.querySelectorAll('.star');
+		// Initialize a variable 'commuteRating' to keep track of the rating count
+    let commuteRating = 0;
+		// Iterate through each element in the 'stars' NodeList using the forEach method
+    stars.forEach((star) => {
+				// Check if the text content of the current 'star' element is equal to the string 'star'
+        if (star.textContent === 'star') {
+						// If the condition is met, increment the 'commuteRating' by 1
+                        commuteRating++;
+        }
+    });
+
     if (reviewContent.trim() !== '') {
 
         db.collection('ratings').add({

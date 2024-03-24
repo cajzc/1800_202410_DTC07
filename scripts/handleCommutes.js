@@ -29,7 +29,6 @@ function startLeg(user, start_leg) {
         legID = "leg1"
     }
 
-    console.log(commuteID)
     db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs").doc(legID).set({
         startTime: firebase.firestore.Timestamp.now(),
         endTime: firebase.firestore.Timestamp.now(),
@@ -150,7 +149,8 @@ function endCommute(user, end_commute) {
         let minutes = Math.floor((commuteTime - hours * 3600) / 60)
         let seconds = Math.round((commuteTime - hours * 3600) % 60)
         commuteTime = `${hours} hrs, ${minutes} mins, ${seconds} secs`
-        console.log(commuteTime)
+        localStorage.setItem("finalCommuteTime", commuteTime)
+
 
         end_commute()
 
@@ -270,7 +270,7 @@ function setup() {
             if (currentCommute == null) {
                 getLocation(() => {
                     let location = localStorage.getItem("currentPosition")
-                    console.log(location)
+
                     startCommute(user, () => {
 
                         localStorage.setItem("currentCommute", "started")

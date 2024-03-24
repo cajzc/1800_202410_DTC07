@@ -97,6 +97,10 @@ function main() {
     loadUser();
     populateReviews();
 
+    commute_time = localStorage.getItem("finalCommuteTime")
+
+    $("#timeDisplay").html(commute_time)
+
     $("#submitReview").on("click", () => {
         submitReview(() => {
             localStorage.clear()

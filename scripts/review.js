@@ -5,6 +5,7 @@ function populateReviews() {
     ratingsRef.get().then((querySanpshot) => {
         querySanpshot.forEach((doc) => {
             const data = doc.data();
+            const reviewTimestamp = doc.data().timestamp.toDate();
 
             const reviewBox = `
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-2">
@@ -17,8 +18,8 @@ function populateReviews() {
                     <!-- <p class="text-gray-800">Ending Point: ${data.endingPoint}</p> -->
                     <!-- <p class="text-gray-800">Taken time: ${data.date}</p> -->
                     <p class="text-gray-600">Rating: ${data.rating}</p>
-                    <p class="text-gray-600">Date: ${data.date}</p>
-            </div>
+                    <p class="text-gray-600">Date: ${reviewTimestamp.toLocaleDateString()}</p>
+                </div>
         `;
 
             document.getElementById("reviewsContainer").innerHTML += reviewBox;
@@ -28,15 +29,62 @@ function populateReviews() {
     })
 }
 
+// Add this JavaScript code to make stars clickable
+
+// Select all elements with the class name "star" and store them in the "stars" variable
+const stars = document.querySelectorAll('.star');
+
+// Iterate through each star element
+stars.forEach((star, index) => {
+    // Add a click event listener to the current star
+    star.addEventListener('click', () => {
+        // Fill in clicked star and stars before it
+        for (let i = 0; i <= index; i++) {
+            // Change the text content of stars to 'star' (filled)
+            document.getElementById(`star${i + 1}`).textContent = 'star';
+        }
+    });
+});
+
 
 function submitReview(reviewSubmitted) {
-    commuteID = localStorage.getItem("currentCommuteID")
+    commuteID = localStorage.getItem("currentCommuteID");
+    const reviewContent = document.getElementById('message').value;
+    // Get the star rating
+		// Get all the elements with the class "star" and store them in the 'stars' variable
+        const stars = document.querySelectorAll('.star');
+		// Initialize a variable 'commuteRating' to keep track of the rating count
+    let commuteRating = 0;
+		// Iterate through each element in the 'stars' NodeList using the forEach method
+    stars.forEach((star) => {
+				// Check if the text content of the current 'star' element is equal to the string 'star'
+        if (star.textContent === 'star') {
+						// If the condition is met, increment the 'commuteRating' by 1
+                        commuteRating++;
+        }
+    });
 
-    //code goes here
+    if (reviewContent.trim() !== '') {
 
-
-    reviewSubmitted()
+        db.collection('ratings').add({
+            commuteID: commuteID,
+            review_content: reviewContent,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            rating: commuteRating
+        }).then(() => {
+            // Clear textarea after successful submission
+            document.getElementById('message').value = '';
+            alert('Review submitted successfully!');
+            reviewSubmitted();
+        }).catch((error) => {
+            console.error('Error adding review: ', error);
+            alert('An error occurred while submitting the review. Please try again later.');
+        });
+    } else {
+        alert('Please enter a review before submitting.');
+    }
 }
+
 
 function loadUser() {
 
@@ -96,6 +144,10 @@ function addFavoriteLocation() {
 function main() {
     loadUser();
     populateReviews();
+
+    commute_time = localStorage.getItem("finalCommuteTime")
+
+    $("#timeDisplay").html(commute_time)
 
     $("#submitReview").on("click", () => {
         submitReview(() => {

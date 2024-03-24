@@ -1,5 +1,6 @@
 function startCommute(user, start_commute) {
 
+
     commuteID = db.collection("users").doc(user.uid).collection("commutes").doc().id
     var currentUserCommute = db.collection("users").doc(user.uid).collection("commutes");
     currentUserCommute.doc(commuteID).set({
@@ -19,7 +20,7 @@ function startLeg(user, start_leg) {
 
     let commuteID = localStorage.getItem("currentCommuteID")
     let legID = localStorage.getItem("currentLegID")
-    let location
+    let location = localStorage.getItem("currentPosition")
     let legCount = 1
     if (legID != null) {
         legCount = parseInt(legID.slice(3)) + 1
@@ -27,11 +28,6 @@ function startLeg(user, start_leg) {
     } else {
         legID = "leg1"
     }
-
-    getLocation(() => {
-        location = localStorage.getItem("currentPosition")
-        //location = geofire.geohashForLocation(location)
-    })
 
     db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs").doc(legID).set({
         startTime: firebase.firestore.Timestamp.now(),
@@ -41,6 +37,7 @@ function startLeg(user, start_leg) {
         leg: legCount,
         startLocation: location
     })
+
 
     localStorage.setItem("currentLegID", legID)
 
@@ -74,6 +71,7 @@ function endLeg(user, end_leg) {
 
     let legEndTime = firebase.firestore.Timestamp.now()
     let path = db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs")
+
     getLocation(() => {
         location = localStorage.getItem("currentPosition")
         //location = geofire.geohashForLocation(location)
@@ -151,7 +149,8 @@ function endCommute(user, end_commute) {
         let minutes = Math.floor((commuteTime - hours * 3600) / 60)
         let seconds = Math.round((commuteTime - hours * 3600) % 60)
         commuteTime = `${hours} hrs, ${minutes} mins, ${seconds} secs`
-        console.log(commuteTime)
+        localStorage.setItem("finalCommuteTime", commuteTime)
+
 
         end_commute()
 
@@ -255,6 +254,7 @@ function getLocation(get_location) {
 
 function savePosition(position) {
     localStorage.setItem("currentPosition", [position.coords.latitude, position.coords.longitude])
+
 }
 
 
@@ -268,9 +268,16 @@ function setup() {
 
         if (user) {
             if (currentCommute == null) {
-                startCommute(user, () => {
-                    localStorage.setItem("currentCommute", "started")
+                getLocation(() => {
+                    let location = localStorage.getItem("currentPosition")
+
+                    startCommute(user, () => {
+
+                        localStorage.setItem("currentCommute", "started")
+                    })
+                    //location = geofire.geohashForLocation(location)
                 })
+
             }
 
             $("#transferSelect").on("click", () => {

@@ -5,6 +5,7 @@ function populateReviews() {
     ratingsRef.get().then((querySanpshot) => {
         querySanpshot.forEach((doc) => {
             const data = doc.data();
+            const reviewTimestamp = doc.data().timestamp.toDate();
 
             const reviewBox = `
                 <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-2">
@@ -17,8 +18,8 @@ function populateReviews() {
                     <!-- <p class="text-gray-800">Ending Point: ${data.endingPoint}</p> -->
                     <!-- <p class="text-gray-800">Taken time: ${data.date}</p> -->
                     <p class="text-gray-600">Rating: ${data.rating}</p>
-                    <p class="text-gray-600">Date: ${data.date}</p>
-            </div>
+                    <p class="text-gray-600">Date: ${reviewTimestamp.toLocaleDateString()}</p>
+                </div>
         `;
 
             document.getElementById("reviewsContainer").innerHTML += reviewBox;
@@ -33,9 +34,25 @@ function submitReview(reviewSubmitted) {
     commuteID = localStorage.getItem("currentCommuteID")
 
     //code goes here
+    const reviewContent = document.getElementById('message').value;
+    if (reviewContent.trim() !== '') {
 
-
-    reviewSubmitted()
+        db.collection('ratings').add({
+            commuteID: commuteID,
+            review_content: reviewContent,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => {
+            // Clear textarea after successful submission
+            document.getElementById('message').value = '';
+            alert('Review submitted successfully!');
+            reviewSubmitted();
+        }).catch((error) => {
+            console.error('Error adding review: ', error);
+            alert('An error occurred while submitting the review. Please try again later.');
+        });
+    } else {
+        alert('Please enter a review before submitting.');
+    }
 }
 
 function loadUser() {

@@ -14,6 +14,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6c
         zoom: 13
     });
 
+    // Uncomment to add geocoder controll to the map
     const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         marker: {
@@ -22,4 +23,5 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZmxlY2siLCJhIjoiY2x0dzBlanI5MXF6azJqcXF6c
         mapboxgl: mapboxgl
     });
 
-    map.addControl(geocoder);
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+

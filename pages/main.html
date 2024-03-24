@@ -50,6 +50,22 @@
                 'GRAD' 0,
                 'opsz' 24
         }
+        .geocoder {
+                position: absolute;
+                display: flex;
+                z-index: 2;
+                width: 50%;
+                left: 50%;
+                margin-left: -25%;
+                top: 465px;
+                justify-content: center;
+            }
+            .mapboxgl-ctrl-geocoder {
+                min-width: 100%;
+            }
+        #map{
+            height: 500px;
+        }
     </style>
 
     <!-- MapBox api and links go here -->
@@ -75,49 +91,42 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <div>
-        <!-- Welcome message -->
-        <div class="bg-inherit text-center text-primary mt-24 text-2xl md:text-5xl">Stay ahead of traffic<br><span
-                class="text-lg md:text-3xl">En-Route Commute</span></div>
-        <h1 class="display-4 text-center">Good morning, <span id="name-goes-here"></span></h1>
 
-    </div>
-
-    <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
-        <section class="mt-2">
+    <main class="flex flex-col md:mb-16 conatiner mx-auto max-w-screen-lg">
+        <section class="">
             <!-- Map Section -->
-            <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip max-w-xl m-auto">
+            <div class="bg-fixed gap-y-4 overflow-clip max-w-5xl m-auto">
                 <div class="container">
                     <div class="relative w-50%">
                         <!-- Map Itself -->
-                        <div id='map' style='height: 300px;'></div>
+                        <div id='map'></div>
                     </div>
                 </div>
-                <!-- Search div  bg-gray-800 opacity-70-->
+            </div>
         </section>
         <!-- Stastistics boxes -->
-        <section class=" flex flex-box flex-col md:flex-row md:justify-between gap-1 mx-auto mb-16 md:mt-6 max-w-full">
-            <div class="my-2">
-                <button
-                    class="justify-between bg-secondary rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
-                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
-                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
-                </button>
-            </div>
-            <div class="my-2">
-                <button
-                    class="bg-secondary text-slate-300 rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
-                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
-                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
-                </button>
-            </div>
-            <div class="my-2">
-                <button
-                    class="bg-secondary text-slate-300 rounded-lg px-4 shadow-md shadow-primary flex-auto text-left text-primary max-w-full">
-                    <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
-                    <h2 class="pt-4 pb-2 text-xl text-slate-300">Log in to see Statistics</h2>
-                </button>
-            </div>
+        <div id="geocoder" class="geocoder"></div>
+
+        <section class="m-auto max-w-5xl">
+            <button class="flex flex-col justify-between bg-secondary px-4 m-auto text-left text-primary max-w-full border border-black">
+                <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                <p class="text-slate-300 text-xl py-2">This is just some placeholder text to fill out the button before we put the statistics here hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhh</p>
+            </button>
+
+            <button class="flex flex-col justify-between bg-secondary px-4 m-auto text-left text-primary max-w-full border border-black">
+                <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                <p class="text-slate-300 text-xl py-2">This is just some placeholder text to fill out the button before we put the statistics here hhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhhh</p>
+            </button>
+
+            <button class="flex flex-col justify-between bg-secondary px-4 m-auto text-left text-primary max-w-full border border-black">
+                <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                <p class="text-slate-300 text-xl py-2">This is just some placeholder text to fill out the button before we put the statistics here</p>
+            </button>
+
+            <button class="flex flex-col justify-between bg-secondary px-4 m-auto text-left text-primary max-w-full border border-black">
+                <h1 class="text-2xl font-bold pt-4 text-accent">Statistics</h1>
+                <p class="text-slate-300 text-xl py-2">This is just some placeholder text to fill out the button before we put the statistics here</p>
+            </button>
         </section>
     </main>
 

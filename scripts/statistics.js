@@ -1,3 +1,48 @@
+function startStatistics() {
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      updateDistance(user.uid, 'timeFrameHere')
+    }
+  })
+}
+
+
+document.getElementById('distance-yesterday').addEventListener('click', ()=>{
+  console.log('distance-yesterday')
+})
+
+document.getElementById('distance-today').addEventListener('click', ()=>{
+  console.log('distance-today')
+})
+
+document.getElementById('distance-last-week').addEventListener('click', ()=>{
+  console.log('distanclaste-week')
+})
+
+document.getElementById('distance-month').addEventListener('click', ()=>{
+  console.log('distance-month')
+})
+
+
+document.getElementById('distance-90-days').addEventListener('click', ()=>{
+  startStatistics()
+})
+
+function updateDistance(user, timeFrame) {
+  db.collection('users').doc(user).collection("commutes").get() // get the commutes collection
+  .then(allHikes=> {
+    console.log(allHikes)
+    //var i = 1;  //Optional: if you want to have a unique ID for each hike
+    allHikes.forEach(doc => { //iterate thru each doc
+      console.log('test')
+        var title = doc.data().name
+        console.log(title)
+    })
+  })
+
+}
+
 const distance_options = {
   chart: {
     height: "100%",
@@ -133,8 +178,15 @@ const time_options = {
   },
 }
 
+
+
 if (document.getElementById("distance-chart") && typeof ApexCharts !== 'undefined') {
   const chart = new ApexCharts(document.getElementById("distance-chart"), distance_options);
+  chart.render();
+}
+
+if (document.getElementById("time-chart") && typeof ApexCharts !== 'undefined') {
+  const chart = new ApexCharts(document.getElementById("time-chart"), time_options);
   chart.render();
 }
 

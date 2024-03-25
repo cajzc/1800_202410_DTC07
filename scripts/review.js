@@ -8,18 +8,80 @@ function populateReviews() {
             const reviewTimestamp = doc.data().timestamp.toDate();
 
             const reviewBox = `
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-2">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-600">${data.userID}</span>
-                        <!-- <span class="material-symbols-outlined">${data.commuteMethod}</span> -->
-                    </div>
-                    <p class="text-gray-800">${data.review_content}</p>
-                    <!-- <p class="text-gray-800">Starting Point: ${data.startingPoint}</p> -->
-                    <!-- <p class="text-gray-800">Ending Point: ${data.endingPoint}</p> -->
-                    <!-- <p class="text-gray-800">Taken time: ${data.date}</p> -->
-                    <p class="text-gray-600">Rating: ${data.rating}</p>
-                    <p class="text-gray-600">Date: ${reviewTimestamp.toLocaleDateString()}</p>
+            <div class="bg-amber-100 p-4 rounded-lg shadow-md mb-2 ">
+            <div class="flex justify-between">
+                <p>${reviewTimestamp.toLocaleDateString()}</p>
+                <div class="flex flex-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-filled" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FBFF00" fill="#BFBB00" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" stroke-width="0" fill="#33DC3B" />
+                    </svg>
+                    <p class="px-1">${data.rating}</p>
                 </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex flex-row text-wrap">
+                    <div class="flex flex-col mt-6 justify-center">
+                        <div class="flex flex-row">
+                            <label for="walk"
+                                class="material-symbols-outlined text-4xl p-1 rounded-lg text-primary cursor-pointer">
+                                directions_walk
+                            </label>
+
+                            <span class="material-symbols-outlined text-4xl pt-1">
+                                arrow_right_alt
+                            </span>
+
+                            <div class="flex flex-col mx-3">
+                                <p>Distance</p>
+                                <p>Time</p>
+                            </div>
+
+                            <span class="material-symbols-outlined text-4xl pt-1">
+                                arrow_right_alt
+                            </span>
+
+                            <label for="bus"
+                                class="material-symbols-outlined text-4xl p-1 rounded-lg text-primary cursor-pointer">
+                                directions_bus
+                            </label>
+                        </div>
+
+                        <div class="flex flex-row my-4">
+                            <label for="bus"
+                                class="material-symbols-outlined text-4xl p-1 rounded-lg text-primary cursor-pointer">
+                                directions_bus
+                            </label>
+
+                            <span class="material-symbols-outlined text-4xl pt-1">
+                                arrow_right_alt
+                            </span>
+
+                            <div class="flex flex-col mx-3">
+                                <p>Distance</p>
+                                <p>Time</p>
+                            </div>
+
+                            <span class="material-symbols-outlined text-4xl pt-1">
+                                arrow_right_alt
+                            </span>
+
+                            <span class="material-symbols-outlined text-red-500 text-4xl p-1">location_on</span>
+                        </div>
+
+                    </div>
+                </div>
+                <p class="text-gray-800">Starting Point: ${data.startingPoint}</p>
+                <p class="text-gray-800">Ending Point: ${data.endingPoint}</p>
+                <p class="text-gray-800">Taken time: ${data.date}</p>
+            </div>
+
+            <div>
+                <p class="font-extrabold">Review</p>
+                <p>${data.review_content}</p>
+            </div>
+        </div>
         `;
 
             document.getElementById("reviewsContainer").innerHTML += reviewBox;
@@ -28,6 +90,21 @@ function populateReviews() {
         console.error("Error getting reviews: ", error)
     })
 }
+// I left this in for you in case you needed it 
+
+{/* <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-2">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-600">${data.userID}</span>
+                        <!-- <span class="material-symbols-outlined">${data.commuteMethod}</span> -->
+                    </div>
+                    <p class="text-gray-800">${data.review_content}</p>
+                    <p class="text-gray-800">Starting Point: ${data.startingPoint}</p>
+                    <p class="text-gray-800">Ending Point: ${data.endingPoint}</p>
+                    <p class="text-gray-800">Taken time: ${data.date}</p>
+                    <p class="text-gray-600">Rating: ${data.rating}</p>
+                    <p class="text-gray-600">Date: ${reviewTimestamp.toLocaleDateString()}</p>
+                </div> */}
+
 
 // Add this JavaScript code to make stars clickable
 

@@ -7,7 +7,7 @@ function startStatistics() {
   })
 }
 
-
+// Distance query selectors
 document.getElementById('distance-yesterday').addEventListener('click', ()=>{
   console.log('distance-yesterday')
 })
@@ -29,18 +29,39 @@ document.getElementById('distance-90-days').addEventListener('click', ()=>{
   startStatistics()
 })
 
+// Time query selectors
+// document.getElementById('time-yesterday').addEventListener('click', ()=>{
+//   console.log('time-yesterday')
+// })
+
+// document.getElementById('time-today').addEventListener('click', ()=>{
+//   console.log('time-today')
+// })
+
+// document.getElementById('time-last-week').addEventListener('click', ()=>{
+//   console.log('time-week')
+// })
+
+// document.getElementById('time-month').addEventListener('click', ()=>{
+//   console.log('time-month')
+// })
+
+
+// document.getElementById('time-90-days').addEventListener('click', ()=>{
+//   startStatistics()
+// })
+
 function updateDistance(user, timeFrame) {
+  let allTime = []
   db.collection('users').doc(user).collection("commutes").get() // get the commutes collection
-  .then(allHikes=> {
-    console.log(allHikes)
-    //var i = 1;  //Optional: if you want to have a unique ID for each hike
-    allHikes.forEach(doc => { //iterate thru each doc
-      console.log('test')
-        var title = doc.data().name
-        console.log(title)
+  .then(allCommutes=> {
+    allCommutes.forEach(doc => { 
+        var totalTime = doc.data().commuteTotalTime
+        allTime.push(totalTime)      
     })
   })
-
+  createTimeGraph(allTime[0], allTime[1])
+  console.log('hello!')
 }
 
 const distance_options = {
@@ -110,7 +131,7 @@ const distance_options = {
   },
 }
 
-
+function createTimeGraph(time_one, time_two){
 const time_options = {
   chart: {
     height: "100%",
@@ -162,7 +183,7 @@ const time_options = {
     },
   ],
   xaxis: {
-    categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+    categories: [time_one, time_two],
     labels: {
       show: false,
     },
@@ -177,12 +198,13 @@ const time_options = {
     show: false,
   },
 }
-
+}
 
 
 if (document.getElementById("distance-chart") && typeof ApexCharts !== 'undefined') {
   const chart = new ApexCharts(document.getElementById("distance-chart"), distance_options);
   chart.render();
+  createTimeGraph(1, 2)
 }
 
 if (document.getElementById("time-chart") && typeof ApexCharts !== 'undefined') {

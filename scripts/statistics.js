@@ -2,7 +2,7 @@ function startStatistics() {
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      updateDistance(user.uid, 'timeFrameHere')
+      updateTime(user.uid, 'timeFrameHere')
     }
   })
 }
@@ -30,41 +30,46 @@ document.getElementById('distance-90-days').addEventListener('click', ()=>{
 })
 
 // Time query selectors
-// document.getElementById('time-yesterday').addEventListener('click', ()=>{
-//   console.log('time-yesterday')
-// })
+document.getElementById('time-yesterday').addEventListener('click', ()=>{
+  console.log('time-yesterday')
+})
 
-// document.getElementById('time-today').addEventListener('click', ()=>{
-//   console.log('time-today')
-// })
+document.getElementById('time-today').addEventListener('click', ()=>{
+  console.log('time-week')
+})
 
-// document.getElementById('time-last-week').addEventListener('click', ()=>{
-//   console.log('time-week')
-// })
-
-// document.getElementById('time-month').addEventListener('click', ()=>{
-//   console.log('time-month')
-// })
+document.getElementById('time-last-week').addEventListener('click', ()=>{
+  console.log('time-last-week')
+})
 
 
-// document.getElementById('time-90-days').addEventListener('click', ()=>{
-//   startStatistics()
-// })
+document.getElementById('time-month').addEventListener('click', ()=>{
+  console.log('time-month')
+})
 
-function updateDistance(user, timeFrame) {
+document.getElementById('time-90-days').addEventListener('click', ()=>{
+  startStatistics()
+})
+
+
+function updateTime(user, timeFrame) {
   let allTime = []
   db.collection('users').doc(user).collection("commutes").get() // get the commutes collection
   .then(allCommutes=> {
     allCommutes.forEach(doc => { 
-        var totalTime = doc.data().commuteTotalTime
-        allTime.push(totalTime)      
+        var totalTime = doc.data().commuteTotalTime.split(', ')
+        // remove this once timestamp is formatted better
+        var hr = parseInt(totalTime[0])
+        var min = parseInt(totalTime[1])
+        var sec = parseInt(totalTime[2])
+        var timeFloat = parseFloat(`${hr}.${min}${sec}`);
+        allTime.push(timeFloat)      
     })
-  })
   createTimeGraph(allTime[0], allTime[1])
-  console.log('hello!')
+  })
 }
 
-const distance_options = {
+var distanceOptions = {
   chart: {
     height: "100%",
     maxWidth: "100%",
@@ -132,7 +137,7 @@ const distance_options = {
 }
 
 function createTimeGraph(time_one, time_two){
-const time_options = {
+var timeOptions = {
   chart: {
     height: "100%",
     maxWidth: "100%",
@@ -178,7 +183,7 @@ const time_options = {
   series: [
     {
       name: "New users",
-      data: [6500, 6418, 6456, 6526, 6356, 6456],
+      data: [time_one, time_two],
       color: "#1A56DB",
     },
   ],
@@ -198,18 +203,19 @@ const time_options = {
     show: false,
   },
 }
+if (document.getElementById("time-chart") && typeof ApexCharts !== 'undefined') {
+  const chart = new ApexCharts(document.getElementById("time-chart"), timeOptions);
+  chart.render();
+}
 }
 
 
 if (document.getElementById("distance-chart") && typeof ApexCharts !== 'undefined') {
-  const chart = new ApexCharts(document.getElementById("distance-chart"), distance_options);
+  const chart = new ApexCharts(document.getElementById("distance-chart"), distanceOptions);
   chart.render();
   createTimeGraph(1, 2)
 }
 
-if (document.getElementById("time-chart") && typeof ApexCharts !== 'undefined') {
-  const chart = new ApexCharts(document.getElementById("time-chart"), time_options);
-  chart.render();
-}
+
 
 

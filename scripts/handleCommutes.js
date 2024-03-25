@@ -239,6 +239,7 @@ function selectTransfer() {
         localStorage.setItem("currentCommute", "bike")
     }
     $("#transferButton").show()
+    $("#undoSelectTransfer").show()
     $("#transferOptions").hide()
 
 }
@@ -287,6 +288,7 @@ function setup() {
 
             $("#undoSelectTransfer").on("click", () => {
                 $("#transferButton").hide()
+                $("#undoSelectTransfer").hide()
                 $("#transferOptions").show()
             })
 
@@ -301,6 +303,7 @@ function setup() {
 
             $("#transferButton").on("click", () => {
                 $("#transferButton").hide()
+                $("#undoSelectTransfer").hide()
                 $("#transferOptions").show()
                 endLeg(user, () => {
                     startLeg(user, () => { })

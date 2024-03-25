@@ -12,7 +12,9 @@ function setup() {
 
     if ($("#currentCommuteIcon").attr("name") == "play") {
         $("#transferButton").hide()
+        $("#undoSelectTransfer").hide()
         $("#transferOptions").show()
+
     }
 
 

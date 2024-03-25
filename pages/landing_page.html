@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Enroute Commute</title>
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tailwind Library CSS CDN go here -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#292D30',
+                        secondary: '#005CA3',
+                        background: 'white',
+                        accent: '#FE9503'
+                    }
+                }
+            }
+        }
+
+    </script>
+    <!-- Other libraries go here -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+
+</head>
+<body class="bg-gradient-to-b from-cyan-300 to-blue-300 h-screen flex flex-col justify-between">
+    <!-- Navbar -->
+    <header>
+        <!-- <nav id="navbarPlaceholder"></nav> -->
+    </header>
+
+    <div class="py-5 ml-4 flex">
+        <h1 class="text-white font-bold outline-gray-800 text-6xl">EN<br>ROUTE COMMUTE
+            <span class="pr-10 material-symbols-outlined text-red-500 text-5xl">location_on</span>
+        </h1>
+    </div>
+
+    <div class="text-center py-5">
+        <button class="bg-yellow-200 text-black py-3 font-bold px-7 rounded-full border border-black">LOG / SIGN IN</button>
+    </div>
+
+    <div>
+        <div class="flex justify-between mr-14 ml-14">
+            <span class="text-7xl material-symbols-outlined">
+                directions_bike
+            </span>
+
+            <span class="text-7xl material-symbols-outlined">
+                directions_run
+            </span>
+
+            <span class="text-7xl material-symbols-outlined">
+                airport_shuttle
+            </span>
+        </div>
+        <div class="w-full h-5 bg-black p-4 border-4 border-t-white border-b-0 border-r-0 border-l-0"></div>
+        <div class="bg-black w-full border-2 border-b border-dashed border-white"></div>
+        <div class="w-full h-5 bg-black p-4 border-4 border-t-0 border-b-white border-r-0 border-l-0"></div>
+    </div>
+
+
+    <div class="text-center mb-4">
+        <span class="font-bold">202410 - DTC07</span>
+    </div>
+
+
+    <!-- our own footer goes here-->
+    <!-- <nav id="footerPlaceholder"></nav> -->
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
+
+    <script src="../scripts/firebaseAPI_DTC07.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/review.js"></script>
+
+
+</body>
+
+</html>

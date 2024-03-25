@@ -56,53 +56,19 @@
         <nav id="navbarPlaceholder"></nav>
     </header>
 
-    <div class="flex flex-row space-x-2 mt-24">
-        <div>
-            <a class="font-extralight text-primary hover:bg-accent px-4 py-2 rounded-lg"
-                href="recent_statistics.html">Recent</a>
-        </div>
-        <div>
+        <div class="mt-24">
             <a class="font-extrabold hover:bg-accent px-4 py-2 rounded-lg" href="statistics.html">Summary</a>
         </div>
-    </div>
 
-    <div class="max-w-sm w-full rounded-lg shadow bg-gray-800 p-4 md:p-6 mt-4"
-        style="transform: scale(0.95);">
+    <!-- Distance -->
+    <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6" style="transform: scale(0.95)">
         <div class="flex justify-between">
             <div>
-                <h5 class="leading-none text-3xl font-bold text-white pb-2" id="total">15.3km</h5>
-                <p class="text-base font-normal text-gray-400" id="subheading">Travelled this week</p>
-            </div>
-            <div>
-                <button id="dropdownStatisticsButton" data-dropdown-toggle="changeStatisticsDropdown"
-                    data-dropdown-placement="bottom" type="button"
-                    class="px-3 py-2 inline-flex items-center text-sm font-medium text-gray-900 focus:outline-none bg-gray-400 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Distance
-                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg></button>
-                <div id="changeStatisticsDropdown"
-                    class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-200" aria-labelledby="dropdownStatisticsButton">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Distance</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Time</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Cost</a>
-                        </li>
-                        
-                    </ul>
-                </div>
+                <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">32.4km</h5>
+                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Distance travelled this <span id="length-of-time">N/A</span></p>
             </div>
             <div
-                class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center" id="percentage">
+                class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center" id="distance-change">
                 12%
                 <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 10 14">
@@ -111,13 +77,13 @@
                 </svg>
             </div>
         </div>
-        <div id="area-chart"></div>
-        <div class="grid grid-cols-1 items-center border-t border-gray-700 justify-between">
+        <div id="distance-chart"></div>
+        <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
             <div class="flex justify-between items-center pt-5">
                 <!-- Button -->
                 <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
                     data-dropdown-placement="bottom"
-                    class="text-sm font-medium text-gray-400 text-center inline-flex items-center hover:text-white"
+                    class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
                     type="button">
                     Last 7 days
                     <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -128,40 +94,40 @@
                 </button>
                 <!-- Dropdown menu -->
                 <div id="lastDaysdropdown"
-                    class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-200" aria-labelledby="dropdownDefaultButton">
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Yesterday</a>
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="distance-yesterday">Yesterday</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Today</a>
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="distance-today">Today</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Last
-                                7
-                                days</a>
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="distance-last=week">Last
+                                7 days</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Last
-                                30
-                                days</a>
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="distance-month">Last
+                                30 days</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-600 hover:text-white">Last
-                                90
-                                days</a>
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="distance-90-days">Last
+                                90 days</a>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
+
+    <!-- Time -->
+
+
 
 
     <nav id="footerPlaceholder"></nav>
@@ -170,10 +136,10 @@
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>
 
-<!-- Statistics libraries -->
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="../scripts/statistics.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <!-- Statistics libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="../scripts/statistics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
 

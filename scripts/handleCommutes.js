@@ -18,15 +18,16 @@ function startCommute(user, start_commute) {
 
 function startLeg(user, start_leg) {
 
+
     let commuteID = localStorage.getItem("currentCommuteID")
     let legID = localStorage.getItem("currentLegID")
     let location = localStorage.getItem("currentPosition")
-    let legCount = 1
     if (legID != null) {
         legCount = parseInt(legID.slice(3)) + 1
         legID = `leg${legCount}`
     } else {
         legID = "leg1"
+        legCount = 1
     }
 
     db.collection("users").doc(user.uid).collection("commutes").doc(commuteID).collection("commuteLegs").doc(legID).set({
@@ -38,10 +39,12 @@ function startLeg(user, start_leg) {
         startLocation: location
     })
 
-
     localStorage.setItem("currentLegID", legID)
 
     start_leg()
+
+
+
 
 }
 
@@ -254,8 +257,7 @@ function getLocation(get_location) {
 }
 
 function savePosition(position) {
-    localStorage.setItem("currentPosition", [position.coords.latitude, position.coords.longitude])
-
+    localStorage.setItem("currentPosition", [position.coords.longitude, position.coords.latitude])
 }
 
 
@@ -269,16 +271,19 @@ function setup() {
 
         if (user) {
             if (currentCommute == null) {
-                getLocation(() => {
-                    let location = localStorage.getItem("currentPosition")
 
-                    startCommute(user, () => {
+                startCommute(user, () => {
+                    localStorage.setItem("currentCommute", "started")
 
-                        localStorage.setItem("currentCommute", "started")
+                    $(function () {
+                        setInterval(() => {
+
+                            $("commuteText").load("../pages/write_time.html", writeTime(user))
+
+                        }, 1000)
                     })
-                    //location = geofire.geohashForLocation(location)
-                })
 
+                })
             }
 
             $("#transferSelect").on("click", () => {
@@ -317,13 +322,7 @@ function setup() {
                 })
             })
 
-            $(function () {
-                setInterval(() => {
 
-                    $("commuteText").load("../pages/write_time.html", writeTime(user))
-
-                }, 1000)
-            })
 
 
 
@@ -333,5 +332,10 @@ function setup() {
     })
 }
 
+window.addEventListener('load', function () {
+    getLocation(() => {
+        setup()
+    })
 
-setup()
+})
+

@@ -16,6 +16,7 @@ var uiConfig = {
             // The Firestore rules must allow the user to write. 
             //------------------------------------------------------------------------------------------
             var user = authResult.user;                            // get the user object from the Firebase authentication database
+            localStorage.clear()
             if (authResult.additionalUserInfo.isNewUser) {         //if new user
                 db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
                     name: user.displayName,                    //"users" collection

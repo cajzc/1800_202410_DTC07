@@ -26,15 +26,17 @@ document.getElementById('distance-month').addEventListener('click', () => {
 
 
 document.getElementById('distance-90-days').addEventListener('click', () => {
-  startStatistics()
+  console.log('distance-90-days')
 })
 
 // Time query selectors
 document.getElementById('time-yesterday').addEventListener('click', () => {
+  startStatistics()
   console.log('time-yesterday')
 })
 
 document.getElementById('time-today').addEventListener('click', () => {
+  startStatistics()
   console.log('time-week')
 })
 
@@ -215,7 +217,6 @@ function createTimeGraph(timeOne, timeTwo) {
 if (document.getElementById("distance-chart") && typeof ApexCharts !== 'undefined') {
   const chart = new ApexCharts(document.getElementById("distance-chart"), distanceOptions);
   chart.render();
-  createTimeGraph(1, 2)
 }
 
 

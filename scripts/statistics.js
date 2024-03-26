@@ -1,46 +1,147 @@
-async function fetchOptions(user_id, option) {
-  return new Promise((resolve) => {
-    db.collection('commutes').doc(user_id)
-    .onSnapshot(userDoc => {
-      var f_input = userDoc.data()[option];
-      resolve(f_input);
-    });
-  });
+function startStatistics() {
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      updateTime(user.uid, 'timeFrameHere')
+    }
+  })
 }
 
-let selectedOption = "distance";
+// Distance query selectors
+document.getElementById('distance-yesterday').addEventListener('click', () => {
+  console.log('distance-yesterday')
+})
 
-document.querySelectorAll('#changeStatisticsDropdown a').forEach(option => {
-    option.addEventListener('click', async function() {
-        selectedOption = this.textContent;
-        console.log(`Selected option: ${selectedOption}`);
+document.getElementById('distance-today').addEventListener('click', () => {
+  console.log('distance-today')
+})
 
-        if (selectedOption === "Cost") {
-            let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'cost');
-            createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
-            document.getElementById('total').innerHTML = `$${f_input}`
-            document.getElementById('dropdownStatisticsButton').innerHTML ='Cost'
-            document.getElementById('subheading').innerHTML = 'Spent this week'
-        }
+document.getElementById('distance-last-week').addEventListener('click', () => {
+  console.log('distanclaste-week')
+})
 
-        else if (selectedOption === "Time") {
-          let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'time');
-          createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
-          document.getElementById('dropdownStatisticsButton').innerHTML ='Time'
-          document.getElementById('total').innerHTML = `$${f_input}`
-          document.getElementById('subheading').innerHTML = 'Spent this week'
-      }
-        else if (selectedOption === "Distance") {
-          let f_input = await fetchOptions('g0jDfbDJzrrbP6SAqMWe', 'distance');
-          createGraph('cost', f_input, f_input, f_input, f_input, f_input, f_input, f_input)
-          document.getElementById('dropdownStatisticsButton').innerHTML ='Distance'
-          document.getElementById('total').innerHTML = `$${f_input}`
-          document.getElementById('subheading').innerHTML = 'Travelled this week'
-      }
-    });
-});
+document.getElementById('distance-month').addEventListener('click', () => {
+  console.log('distance-month')
+})
 
-function createGraph(title, f_input, s_input, t_input, ft_input, fv_input, sx_input, sv_input){  const options = {
+
+document.getElementById('distance-90-days').addEventListener('click', () => {
+  console.log('distance-90-days')
+})
+
+// Time query selectors
+document.getElementById('time-yesterday').addEventListener('click', () => {
+  startStatistics()
+  console.log('time-yesterday')
+})
+
+document.getElementById('time-today').addEventListener('click', () => {
+  startStatistics()
+  console.log('time-week')
+})
+
+document.getElementById('time-last-week').addEventListener('click', () => {
+  console.log('time-last-week')
+})
+
+
+document.getElementById('time-month').addEventListener('click', () => {
+  console.log('time-month')
+})
+
+document.getElementById('time-90-days').addEventListener('click', () => {
+  startStatistics()
+})
+
+
+function updateTime(user, timeFrame) {
+  let allTime = []
+  db.collection('users').doc(user).collection("commutes").get() // get the commutes collection
+    .then(allCommutes => {
+      allCommutes.forEach(doc => {
+        var totalTime = doc.data().commuteTotalTime.split(', ')
+        // remove this once timestamp is formatted better
+        var hr = parseInt(totalTime[0])
+        var min = parseInt(totalTime[1])
+        var sec = parseInt(totalTime[2])
+        var timeFloat = parseFloat(`${hr}.${min}${sec}`);
+        allTime.push(timeFloat)
+      })
+      createTimeGraph(allTime[0], allTime[1])
+    })
+}
+
+var distanceOptions = {
+  chart: {
+    height: "100%",
+    maxWidth: "100%",
+    type: "area",
+    fontFamily: "Inter, sans-serif",
+    dropShadow: {
+      enabled: false,
+    },
+    toolbar: {
+      show: false,
+    },
+  },
+  tooltip: {
+    enabled: true,
+    x: {
+      show: false,
+    },
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      opacityFrom: 0.55,
+      opacityTo: 0,
+      shade: "#1C64F2",
+      gradientToColors: ["#FE9503"],
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    width: 6,
+  },
+  grid: {
+    show: false,
+    strokeDashArray: 4,
+    padding: {
+      left: 2,
+      right: 2,
+      top: 0
+    },
+  },
+  series: [
+    {
+      name: "New users",
+      data: [6500, 6418, 6456, 6526, 6356, 6456],
+      color: "#FE9503",
+    },
+  ],
+  xaxis: {
+    categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+    labels: {
+      show: false,
+    },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    show: false,
+  },
+}
+
+function createTimeGraph(timeOne, timeTwo) {
+  var timeTitle = document.getElementById('time-total')
+  timeTitle.innerHTML = timeOne + timeTwo + 'hrs'
+  var timeOptions = {
     chart: {
       height: "100%",
       maxWidth: "100%",
@@ -65,7 +166,7 @@ function createGraph(title, f_input, s_input, t_input, ft_input, fv_input, sx_in
         opacityFrom: 0.55,
         opacityTo: 0,
         shade: "#1C64F2",
-        gradientToColors: ["#FE9503"],
+        gradientToColors: ["#1C64F2"],
       },
     },
     dataLabels: {
@@ -83,19 +184,15 @@ function createGraph(title, f_input, s_input, t_input, ft_input, fv_input, sx_in
         top: 0
       },
     },
-
     series: [
-      // REPLACE THIS WITH FIRESTORE INFORMATION
       {
-        name: `${title}`,
-        data: [f_input, s_input, t_input, ft_input, fv_input, sx_input, sv_input],
+        name: "Time Spent",
+        data: [timeOne, timeTwo],
         color: "#FE9503",
       },
     ],
-    
     xaxis: {
-      // REPLACE THIS WITH FIRESTORE INFORMATION
-      categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+      categories: [timeOne, timeTwo],
       labels: {
         show: false,
       },
@@ -110,10 +207,18 @@ function createGraph(title, f_input, s_input, t_input, ft_input, fv_input, sx_in
       show: false,
     },
   }
-
-  if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-    const chart = new ApexCharts(document.getElementById("area-chart"), options);
+  if (document.getElementById("time-chart") && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(document.getElementById("time-chart"), timeOptions);
     chart.render();
   }
 }
+
+
+if (document.getElementById("distance-chart") && typeof ApexCharts !== 'undefined') {
+  const chart = new ApexCharts(document.getElementById("distance-chart"), distanceOptions);
+  chart.render();
+}
+
+
+
 

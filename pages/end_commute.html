@@ -79,29 +79,29 @@
         <div class="mt-10 rounded-lg text-center p-4">
             <h1>How would you rate your commute?</h1>
             <div class="flex items-center justify-center mb-4" id="starRating">
-                    <span class="material-icons star" id="star1">star_outline</span>
-                    <span class="material-icons star" id="star2">star_outline</span>
-                    <span class="material-icons star" id="star3">star_outline</span>
-                    <span class="material-icons star" id="star4">star_outline</span>
-                    <span class="material-icons star" id="star5">star_outline</span>
+                <span class="material-icons star" id="star1">star_outline</span>
+                <span class="material-icons star" id="star2">star_outline</span>
+                <span class="material-icons star" id="star3">star_outline</span>
+                <span class="material-icons star" id="star4">star_outline</span>
+                <span class="material-icons star" id="star5">star_outline</span>
             </div>
             <button id="submitReview"
                 class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Submit</button>
         </div>
-        
-            <textarea id="message" rows="14"
-                class="block p-2.5 w-full text-sm text-primary bg-gray-50 rounded-lg border border-gray-300 focus:ring-secondary focus:border-blue-500 "
-                placeholder="Leave a Review..."></textarea>
-            <br>
-            <button id="submitReview"
-                class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Submit</button>
 
-            <a href="../pages/main.html" onclick="localStorage.clear()"
-                class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Skip</a>
-        </div>
+        <textarea id="message" rows="14"
+            class="block p-2.5 w-full text-sm text-primary bg-gray-50 rounded-lg border border-gray-300 focus:ring-secondary focus:border-blue-500 "
+            placeholder="Leave a Review..."></textarea>
+        <br>
+        <button id="submitReview"
+            class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Submit</button>
+
+        <a href="../pages/main.html" onclick="localStorage.clear()"
+            class="inline-block p-4 bg-secondary rounded-lg shadow-primary shadow-md font-semibold">Skip</a>
+    </div>
     </div>
 
-    <nav id="footerPlaceholder"></nav>
+    <!-- <nav id="footerPlaceholder"></nav> -->
     <script src="../scripts/firebaseAPI_DTC07.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/skeleton.js"></script>

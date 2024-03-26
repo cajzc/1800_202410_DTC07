@@ -18,7 +18,7 @@
                     colors: {
                         primary: '#292D30',
                         secondary: '#005CA3',
-                        background: '#C4CCCE',
+                        background: 'white',
                         accent: '#FE9503'
                     }
                 }
@@ -65,7 +65,7 @@
 </head>
 
 
-<body class="bg-background">
+<body class="bg-gradient-to-b from-cyan-300 to-blue-300 h-screen flex flex-col justify-between">
     <script src="./scripts/firebaseAPI_DTC07.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/skeleton.js"></script>
@@ -79,10 +79,50 @@
     <!-- Stuff for body goes here -->
     <header>
         <!-- Navbar -->
-        <nav id="navbarPlaceholder"></nav>
+        <!-- <nav id="navbarPlaceholder"></nav> -->
     </header>
+
+    <!-- En-Route-commute -->
+    <div class="py-5 ml-4 flex">
+        <h1 class="text-white font-bold outline-gray-800 text-6xl">EN<br>ROUTE COMMUTE
+            <span class="pr-10 material-symbols-outlined text-red-500 text-5xl">location_on</span>
+        </h1>
+    </div>
+
+    <!-- Login Button -->
+    <div class="flex justify-center mt-4 text-primary text-center gap-2">
+        <a href="pages/login.html"
+        class="bg-yellow-200 text-black py-3 font-bold px-7 rounded-full border border-black"
+            role="button"><span class="font-bold">Sign In</span></a>
+    </div>
+
+    <!-- Road drawing below -->
     <div>
-        <!-- Welcome message -->
+        <div class="flex justify-between mr-14 ml-14">
+            <span class="text-7xl material-symbols-outlined">
+                directions_bike
+            </span>
+
+            <span class="text-7xl material-symbols-outlined">
+                directions_run
+            </span>
+
+            <span class="text-7xl material-symbols-outlined">
+                airport_shuttle
+            </span>
+        </div>
+        <div class="w-full h-5 bg-black p-4 border-4 border-t-white border-b-0 border-r-0 border-l-0"></div>
+        <div class="bg-black w-full border-2 border-b border-dashed border-white"></div>
+        <div class="w-full h-5 bg-black p-4 border-4 border-t-0 border-b-white border-r-0 border-l-0"></div>
+    </div>
+
+    <div class="text-center mb-4">
+        <span class="font-bold">202410 - DTC07</span>
+    </div>
+
+
+    <!-- <div>
+         Welcome message
         <div class="bg-inherit text-center text-primary pt-24 text-2xl md:text-5xl">Stay ahead of traffic<br><span
                 class="text-lg md:text-3xl">En-Route Commute</span></div>
 
@@ -91,22 +131,24 @@
                 class="btn btn-info bg-accent rounded px-4 py-2 shadow-md shadow-primary md: text-xl"
                 role="button"><span class="font-bold">Sign In</span></a>
         </div>
-    </div>
-    <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
+    </div> -->
+
+
+    <!-- <main class="flex flex-col md:mb-16 conatiner mx-auto my-6 px-6 gap-4 max-w-screen-lg">
         <section class="mt-2">
-            <!-- Map Section -->
+            Map Section
             <div class="gap-y-4 shadow-md shadow-primary rounded-lg overflow-clip max-w-xl m-auto">
                 <div class="container">
                     <div class="relative w-50%">
-                        <!-- Map Itself -->
+                        Map Itself
                             <div id='map' style='height: 300px;'></div>
                     </div>
                 </div>
-                <!-- Search div  bg-gray-800 opacity-70-->
-        </section>
+                 Search div  bg-gray-800 opacity-70
+        </section> -->
         <!-- Stastistics boxes -->
 
-    </main>
+    <!-- </main>  -->
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
     <!---------------------------------------------->

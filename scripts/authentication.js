@@ -35,11 +35,12 @@ var uiConfig = {
             return false;
         },
     },
-    uiShown: function () {
+    /*uiShown: function () {
         // The widget is rendered.
         // Hide the loader.
+        console.log("here")
         document.getElementById('loader').style.display = 'none';
-    },
+    },*/
 
     signInFlow: 'popup', // Use popup for sign-in flow
     signInSuccessUrl: '../pages/main.html', // Redirect URL after successful sign-in
